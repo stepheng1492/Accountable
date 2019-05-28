@@ -4,7 +4,9 @@
   "description": "App for teacher/parent contact",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "react-dev": "webpack --config webpack.config.js --mode development --watch",
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,19 @@
   "bugs": {
     "url": "https://github.com/omarrashid2/Accountable/issues"
   },
-  "homepage": "https://github.com/omarrashid2/Accountable#readme"
+  "homepage": "https://github.com/omarrashid2/Accountable#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1"
+  }
 }
