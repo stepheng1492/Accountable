@@ -62,6 +62,58 @@ app.post('/comments', (req, res) => {
     })
 });
 
+app.get('/students', (req, res) => {
+    // take class name from query body, associate with id, then get the student info
+    // eveyrthing with that class ID
+    // send it back to the client
+    db.models.Students.findAll({
+        where: {
+            classID: req.query.classID,
+        }
+    })
+    .then((response) => {
+        res.send(response);
+    })
+    .catch((err) => {
+        console.log('error querying database for students', err);
+        res.sendStatus(500);
+    })
+});
+
+// get request for classes
+
+app.get('/classes', (req, res) => {
+    db.models.Classes.findAll({
+        where: {
+            // when teacher logs in, all classes associated with their ID show up on page
+            teacherID: req.query.teacherID,
+        }
+    })
+    .then((response) => {
+        res.send(response);
+    })
+    .catch((err) => {
+        console.log('error querying database for classes', err);
+        res.sendStatus(500);
+    })
+});
+
+// comments get req -- when teacher clicks on student history
+
+app.get('/comments', (req, res) => {
+    db.models.Comments.findAll({
+        where: {
+            studentID: req.query.studentID,
+        }
+    })
+    .then((response) => {
+        res.send(response);
+    })
+    .catch(() => {
+        console.log('error querying database for comments', err);
+        res.sendStatus(500);
+    })
+})
 
 
 app.listen(port, () => console.log(`Our app listening on port ${port}!`))
