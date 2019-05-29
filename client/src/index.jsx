@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Select from 'react-select';
+import Login from './components/Login.jsx';
 
 const options = [
     {value: 'test One', label: "Operation Spark"},
@@ -23,12 +24,9 @@ class App extends React.Component {
 
     handleChange(selectedOption) {
         event.preventDefault();
-        // console.log(selectedOption.label);
         this.setState({
            selected: selectedOption.label
         });
-        // console.log(`You picked: `, selectedOption)
-        console.log(this.state)
     }
 
     render() {
@@ -40,17 +38,17 @@ class App extends React.Component {
                 return (
                     <div>
                         <div>Some Nav Bar Stuff Here: Date, Time, Whatever</div>
-                        <LoginForm />
+                        <Login state={this.state}/>
                     </div>
                 )
             }
             return (
                 <div>
                     <div>Some Nav Bar Stuff Here: Date, Time, Whatever</div>
-                    <h1>Select Your School</h1>
-                    <div class="selectBar">
+                    <h2>Select Your School</h2>
+                    <div>
                     <Select
-                        name="pick a school"
+                        name="Choose an institution"
                         value={selected}
                         options={options}
                         onChange={this.handleChange}
