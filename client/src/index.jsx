@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Select from 'react-select';
 import Login from './components/Login.jsx';
+import NavBar from './components/NavBar.jsx';
 
 const options = [
     {value: 'test One', label: "Operation Spark"},
@@ -37,15 +38,16 @@ class App extends React.Component {
             if (selected === 'Operation Spark') {
                 return (
                     <div>
-                        {/* <NavBar /> */}
-                        <div>Some Nav Bar Stuff Here: Date, Time, School Banner</div>
+                        <NavBar />
+                        {/* <div>Some Nav Bar Stuff Here: Date, Time, School Banner</div> */}
                         <Login state={this.state}/>
                     </div>
                 )
             }
             return (
                 <div>
-                    <div>Some Nav Bar Stuff Here: Date, Time, School Banner</div>
+                    <NavBar />
+                    {/* <div>Some Nav Bar Stuff Here: Date, Time, School Banner</div> */}
                     <h2>Select Your School</h2>
                     <div>
                     <Select
