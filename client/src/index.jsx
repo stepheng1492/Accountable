@@ -37,6 +37,7 @@ class App extends React.Component {
             if (selected === 'Operation Spark') {
                 return (
                     <div>
+                        {/* <NavBar /> */}
                         <div>Some Nav Bar Stuff Here: Date, Time, Whatever</div>
                         <Login state={this.state}/>
                     </div>
@@ -44,7 +45,7 @@ class App extends React.Component {
             }
             return (
                 <div>
-                    <div>Some Nav Bar Stuff Here: Date, Time, Whatever</div>
+                    <div>Some Nav Bar Stuff Here: Date, Time, School Banner</div>
                     <h2>Select Your School</h2>
                     <div>
                     <Select

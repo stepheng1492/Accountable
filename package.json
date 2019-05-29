@@ -26,7 +26,8 @@
     "react-select": "^3.0.3"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "babel-preset-react": "^6.24.1",
     "webpack": "^4.32.2",

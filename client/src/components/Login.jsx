@@ -1,5 +1,6 @@
 import React from 'react';
 import dummyData from '../dummyData.js';
+import Teacher from './Teacher.jsx';
 
 class Login extends React.Component {
     constructor(props) {
@@ -7,7 +8,8 @@ class Login extends React.Component {
 
         this.state = {
             attemptedPass: '',
-            validLogin: false
+            validLogin: false,
+            currentTeacher: ''
         };
         
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -15,18 +17,18 @@ class Login extends React.Component {
     }
 
     handleSubmit(event) {
-        // const { attemptedPass, passwords } = this.state;
         event.preventDefault();
-        // console.log(this.state.attemptedPass);
-        // console.log(typeof this.state.attemptedPass);
         dummyData.forEach( teacher => {
             if (teacher.code.toString() === this.state.attemptedPass) {
                 this.setState({
-                    validLogin: true
+                    validLogin: true,
+                    currentTeacher: teacher.name
                 })
+                return;
             }
         })
-        console.log(dummyData);
+
+        // console.log(dummyData);
     }
 
     handleChange(event) {
@@ -40,11 +42,11 @@ class Login extends React.Component {
     }
 
     render() {
-        const { validLogin } = this.state;
+        const { validLogin, currentTeacher } = this.state;
         if (validLogin) {
             return (
                 <div>
-                    <h1>TEACHER PAGE TEST</h1>
+                    <Teacher teacherName={currentTeacher} />
                 </div>
             )
         }
