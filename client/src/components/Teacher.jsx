@@ -6,15 +6,16 @@ class Teacher extends React.Component {
 
         this.state = {
             teacherName: this.props.teacherName,
-            newClass: 'null',
-            formSubmit: false
+            newClass: '',
+            formSubmit: false,
+            teacherId: this.props.uniqId
         }
         this.addClass = this.addClass.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     addClass() {
-        console.log('test');
+        console.log(this.props);
         this.setState({
             formSubmit: true
         })
@@ -24,11 +25,12 @@ class Teacher extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        // console.log(event.target.value);
+        const { newClass } = this.state;
         this.setState({
+            
             formSubmit: false
         })
-        return false;
+        // console.log(newClass);
     }
 
     handleChange(event) {
@@ -40,19 +42,20 @@ class Teacher extends React.Component {
     }
 
     render() {
+        // console.log(this.state); 
         const { teacherName, formSubmit } = this.state;
         if (formSubmit) {
             return (
                 <div>
                     <h2>Welcome {teacherName}</h2>
                     <div>
-                        <form>
+                        <form onSubmit={this.handleSubmit} >
                             <label>
                                 Class name:
                                 <br />
                                 <input type="text" name="name" onChange={this.handleChange} />
                             </label>
-                            <input type="button" value="Submit" onSubmit={this.handleSubmit} />
+                            <input type="submit" value="Submit" />
                         </form>
                     </div>
                 </div>

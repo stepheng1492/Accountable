@@ -6,8 +6,9 @@ import NavBar from './components/NavBar.jsx';
 
 const options = [
     {value: 'test One', label: "Operation Spark"},
-    {value: 'test Two', label: "Tulane"},
-    {value: 'test Three', label: 'UNO'}
+    {value: 'test Two', label: "Bonnabel"},
+    {value: 'test Three', label: 'East Jefferson'},
+    {value: 'test Four', label: 'Grace King'}
 ];
 
 class App extends React.Component {
@@ -39,7 +40,6 @@ class App extends React.Component {
                 return (
                     <div>
                         <NavBar />
-                        {/* <div>Some Nav Bar Stuff Here: Date, Time, School Banner</div> */}
                         <Login state={this.state}/>
                     </div>
                 )
@@ -47,7 +47,6 @@ class App extends React.Component {
             return (
                 <div>
                     <NavBar />
-                    {/* <div>Some Nav Bar Stuff Here: Date, Time, School Banner</div> */}
                     <h2>Select Your School</h2>
                     <div>
                     <Select
