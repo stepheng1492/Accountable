@@ -6,10 +6,11 @@ class Teacher extends React.Component {
 
         this.state = {
             teacherName: this.props.teacherName,
-            classes: [],
+            newClass: 'null',
             formSubmit: false
         }
         this.addClass = this.addClass.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     addClass() {
@@ -19,6 +20,23 @@ class Teacher extends React.Component {
         })
         // set state to be a form
         // on form submission, reset state to teacher view
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        // console.log(event.target.value);
+        this.setState({
+            formSubmit: false
+        })
+        return false;
+    }
+
+    handleChange(event) {
+        // event.preventDefault();
+        console.log(event.target.value);
+        this.setState({
+            newClass: event.target.value
+        })
     }
 
     render() {
@@ -32,9 +50,9 @@ class Teacher extends React.Component {
                             <label>
                                 Class name:
                                 <br />
-                                <input type="text" name="name" />
+                                <input type="text" name="name" onChange={this.handleChange} />
                             </label>
-                            <input type="submit" value="Submit" />
+                            <input type="button" value="Submit" onSubmit={this.handleSubmit} />
                         </form>
                     </div>
                 </div>
