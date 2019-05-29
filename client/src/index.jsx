@@ -38,7 +38,7 @@ class App extends React.Component {
                 return (
                     <div>
                         {/* <NavBar /> */}
-                        <div>Some Nav Bar Stuff Here: Date, Time, Whatever</div>
+                        <div>Some Nav Bar Stuff Here: Date, Time, School Banner</div>
                         <Login state={this.state}/>
                     </div>
                 )
