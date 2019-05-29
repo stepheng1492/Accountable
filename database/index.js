@@ -66,7 +66,7 @@ const Students = sequelize.define('student', {
 const Comments = sequelize.define('comment', {
     studentID: {
         type: Sequelize.INTEGER,
-        references: {model: 'student', key: 'id'}
+        references: {model: 'students', key: 'id'}
     },
     comment: {
         type: Sequelize.TEXT,
@@ -74,10 +74,8 @@ const Comments = sequelize.define('comment', {
     date: {
         type: Sequelize.DATE,
     },
-})
+});
 
-Students.hasMany(Comments, {as: 'comment'});
-Comments.hasOne(Students)
 
 Teachers.sync();
 Classes.sync();
