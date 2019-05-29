@@ -1,10 +1,13 @@
-const express = require('express');
-const app = express();
-const db = require('../database/index')
-
-
+const express = require('express')
 const port = 3000;
+const path = require('path');
 
-app.listen(port, () => {
-    console.log('listening on port 3000!');
-});
+const app = express();
+
+
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+
+
+
+app.listen(port, () => console.log(`Our app listening on port ${port}!`))
