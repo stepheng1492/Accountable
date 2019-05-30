@@ -5,6 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const app = express();
+app.use(bodyParser.json());
 
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
@@ -16,7 +17,7 @@ app.post('/classes', (req, res) => {
     // on req.body there is class name
     db.models.Classes.create({
         name: req.body.className,
-        students: '[]',
+        teacherID: req.body.id,
     })
     .then(() => {
         console.log('class saved in database successfully');
@@ -34,7 +35,6 @@ app.post('/students', (req, res) => {
         parentName: req.body.parentName,
         phone: req.body.phone,
         email: req.body.email,
-        comments: '[]',
     })
     .then(() => {
         console.log('Student data saved in database successfully');
@@ -115,5 +115,18 @@ app.get('/comments', (req, res) => {
     })
 })
 
+
+// get handler for teachers -- this will have to be called on successful log in
+
+app.get('/teachers', (req, res) => {
+    // right now, query database and send back the test teacher
+    db.models.Teachers.findAll()
+    .then((data) => {
+        res.send(data);
+    })
+    .catch((err) => {
+        console.log('error getting from /teachers', err);
+    })
+})
 
 app.listen(port, () => console.log(`Our app listening on port ${port}!`))
