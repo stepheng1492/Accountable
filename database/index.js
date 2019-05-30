@@ -31,12 +31,6 @@ const Teachers = sequelize.define('teacher', {
     school: {
         type: Sequelize.STRING,
     },
-    username: {
-        type: Sequelize.STRING,
-    },
-    password: {
-        type: Sequelize.STRING,
-    },
 });
 
 // Teachers.methods.hashPassword = function(password) {
