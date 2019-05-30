@@ -11,7 +11,7 @@ class ClassListItem extends React.Component {
         return (
             <div>
                 <li>
-                    {this.props.eachClass}
+                    {this.props.eachClass.name}
                 </li>
             </div>
         )
