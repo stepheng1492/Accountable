@@ -80,8 +80,6 @@ const Comments = sequelize.define('comment', {
     },
 });
 
-// adding 'test' teacher to database
-// remove when going live
 Comments.sync()
 .then(() => {
     return Classes.sync();
@@ -93,11 +91,6 @@ Comments.sync()
     return Teachers.sync()
        
 })
-.then(() => {
-        return Teachers.create({
-            name: 'test',
-        });
-    })
 .catch((err) => {
     console.error(err);
 })
