@@ -3,14 +3,14 @@ const db = require('../database/index')
 const port = 3000;
 const path = require('path');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser')
+// const cookieParser = require('cookie-parser')
 
 const app = express();
 app.use(bodyParser.json());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:false }));
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 

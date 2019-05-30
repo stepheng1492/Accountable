@@ -4,7 +4,7 @@ const DIST_DIR = path.join(__dirname, '/client/dist');
 
 module.exports = {
     mode: 'production',
-    entry: `${SRC_DIR}/components/TeacherHome.jsx`,
+    entry: `${SRC_DIR}/components/App.jsx`,
     module: {
         rules: [
             {

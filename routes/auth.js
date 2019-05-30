@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const { Teachers } = require('../database/index');
+// const express = require('express');
+// const router = express.Router();
+// const { Teachers } = require('../database/index');
 // const User = require('database right here')
 
 

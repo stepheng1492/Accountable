@@ -88,4 +88,4 @@ class TeacherHome extends React.Component {
     }
 }
 
-ReactDOM.render(<TeacherHome />, document.getElementById('app'));
+// ReactDOM.render(<TeacherHome />, document.getElementById('app'));
