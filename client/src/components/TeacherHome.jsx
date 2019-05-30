@@ -16,6 +16,7 @@ class TeacherHome extends React.Component {
         this.submitClass = this.submitClass.bind(this);
         this.changeInputState = this.changeInputState.bind(this);
         this.submitClassHandler = this.submitClassHandler.bind(this);
+        this.getClassData = this.getClassData.bind(this);
     }
 
     changeInputState(e) {
@@ -43,7 +44,11 @@ class TeacherHome extends React.Component {
     }
 
     getClassData() {
-        return axios.get('/classes');
+        return axios.get('/classes', {
+            params: {
+                teacherID: this.state.currentTeacherId,
+            }
+        });
     }
 
     componentDidMount() {
@@ -56,6 +61,14 @@ class TeacherHome extends React.Component {
                 currentTeacherId: id,
                 currentTeacherName: name,
             })
+        })
+        .then(() => {
+            this.getClassData()
+            .then(data => {
+                this.setState({
+                    currentTeacherClasses: data.data,
+                })
+            });
         })
     }
 

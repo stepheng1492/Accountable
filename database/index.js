@@ -1,11 +1,21 @@
-// sequalize
-// connect to database
-// exprt connection
+require('dotenv').config();
+
+const { MASTER_USERNAME,
+        DB_NAME,
+        DB_PASSWORD,
+        DB_PORT,
+        DB_URI
+    } = process.env;
 
 const Sequelize = require('sequelize');
+<<<<<<< HEAD
 const bcrypt = require('bcrypt');
 const sequelize = new Sequelize('accountable', 'root', '', {
     host: 'localhost',
+=======
+const sequelize = new Sequelize(DB_NAME, MASTER_USERNAME, DB_PASSWORD, {
+    host: DB_URI,
+>>>>>>> 6969ac147345b93d1f2d8b79ac1ab8085f7fa09f
     dialect: 'mysql'
 });
 
