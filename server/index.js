@@ -5,6 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const app = express();
+app.use(bodyParser.json());
 
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
@@ -16,6 +17,7 @@ app.post('/classes', (req, res) => {
     // on req.body there is class name
     db.models.Classes.create({
         name: req.body.className,
+        teacherID: req.body.id,
         students: '[]',
     })
     .then(() => {
