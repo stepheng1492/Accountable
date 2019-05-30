@@ -9,7 +9,7 @@ module.exports = function(passport) {
         done(null, user);
     })
 
-    passport.use(new localStrategy((username, password, done) {
+    passport.use(new localStrategy((username, password, done) => {
         User.findOne({username:username}, function(err, doc) {
             if(err) {
                 done(err);

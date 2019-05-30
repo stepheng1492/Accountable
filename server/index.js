@@ -116,4 +116,17 @@ app.get('/comments', (req, res) => {
 })
 
 
+// get handler for teachers -- this will have to be called on successful log in
+
+app.get('/teachers', (req, res) => {
+    // right now, query database and send back the test teacher
+    db.models.Teachers.findAll()
+    .then((data) => {
+        res.send(data);
+    })
+    .catch((err) => {
+        console.log('error getting from /teachers', err);
+    })
+})
+
 app.listen(port, () => console.log(`Our app listening on port ${port}!`))

@@ -79,9 +79,6 @@ const Comments = sequelize.define('comment', {
     comment: {
         type: Sequelize.TEXT,
     },
-    date: {
-        type: Sequelize.DATE,
-    },
 });
 
 
