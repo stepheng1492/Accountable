@@ -37,9 +37,6 @@ const Classes = sequelize.define('class', {
     name: {
         type: Sequelize.STRING,
     },
-    students: {
-        type: Sequelize.JSON,
-    },
     teacherID: {
         type: Sequelize.INTEGER,
         references: { model: 'teachers', key: 'id' }
@@ -60,9 +57,6 @@ const Students = sequelize.define('student', {
     email: {
         type: Sequelize.STRING,
     },
-    comments: {
-        type: Sequelize.JSON,
-    },
     classID: {
         type: Sequelize.INTEGER,
         references: {model: 'classes', key: 'id'}
@@ -82,10 +76,34 @@ const Comments = sequelize.define('comment', {
 });
 
 
-Teachers.sync();
+Teachers.sync()
+    .then(() => {
+        Teachers.destroy({
+            where: {
+                name: 'test',
+            }
+        })
+        .then(() => {
+            Teachers.create({
+                name: 'test',
+            });
+        })
+    });
 Classes.sync();
 Students.sync();
 Comments.sync();
+
+
+// adding 'test' teacher to database
+// remove when going live
+// Teachers.destroy({
+//     where: {
+//         name: 'test',
+//     }
+// });
+// Teachers.create({
+//     name: 'test',
+// });
 
 
 module.exports.models = {
