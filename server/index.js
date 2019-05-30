@@ -5,6 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const app = express();
+app.use(bodyParser.json());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:false }));
@@ -29,6 +30,7 @@ app.post('/classes', (req, res) => {
     // on req.body there is class name
     db.models.Classes.create({
         name: req.body.className,
+        teacherID: req.body.id,
         students: '[]',
     })
     .then(() => {
