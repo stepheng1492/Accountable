@@ -21,7 +21,6 @@ app.post('/classes', (req, res) => {
     db.models.Classes.create({
         name: req.body.className,
         teacherID: req.body.id,
-        students: '[]',
     })
     .then(() => {
         console.log('class saved in database successfully');
@@ -39,7 +38,6 @@ app.post('/students', (req, res) => {
         parentName: req.body.parentName,
         phone: req.body.phone,
         email: req.body.email,
-        comments: '[]',
     })
     .then(() => {
         console.log('Student data saved in database successfully');

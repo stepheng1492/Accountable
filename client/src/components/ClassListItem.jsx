@@ -5,16 +5,17 @@ import axios from 'axios';
 class ClassListItem extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            currentClass = '',
-        }
     }
 
     render() {
         return (
             <div>
-                <h2>Class Name</h2>
+                <li>
+                    {this.props.eachClass}
+                </li>
             </div>
         )
     }
 }
+
+export default ClassListItem;

@@ -42,6 +42,10 @@ class TeacherHome extends React.Component {
        return axios.get('/teachers')
     }
 
+    getClassData() {
+        return axios.get('/classes');
+    }
+
     componentDidMount() {
         // show current teacher name and ID -- set the state
         this.getTeacherData()
@@ -64,7 +68,7 @@ class TeacherHome extends React.Component {
                 <div>
                     <input placeholder="add class here" onChange={this.changeInputState}></input>
                     <button onClick={this.submitClassHandler}>Add Class</button>
-                    <Classes teacherName={this.state.currentTeacherName}/>
+                    <Classes teacherName={this.state.currentTeacherName} classList={this.state.currentTeacherClasses}/>
                 </div>
             </div>
         )
