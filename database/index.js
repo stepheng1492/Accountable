@@ -8,8 +8,8 @@ const { MASTER_USERNAME,
     } = process.env;
 
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('accountable', 'root', '', {
-    host: 'localhost',
+const sequelize = new Sequelize(DB_NAME, MASTER_USERNAME, DB_PASSWORD, {
+    host: DB_URI,
     dialect: 'mysql'
 });
 
@@ -82,23 +82,25 @@ const Comments = sequelize.define('comment', {
 
 // adding 'test' teacher to database
 // remove when going live
-
-Teachers.sync()
-    .then(() => {
-        Teachers.destroy({
-            where: {
-                name: 'test',
-            }
-        })
-        .then(() => {
-            Teachers.create({
-                name: 'test',
-            });
-        })
-    });
-Classes.sync();
-Students.sync();
-Comments.sync();
+Comments.sync()
+.then(() => {
+    return Classes.sync();
+})
+.then(() => {
+    return Students.sync()
+})
+.then(() => {
+    return Teachers.sync()
+       
+})
+.then(() => {
+        return Teachers.create({
+            name: 'test',
+        });
+    })
+.catch((err) => {
+    console.error(err);
+})
 
 
 
