@@ -1,10 +1,15 @@
-// sequalize
-// connect to database
-// exprt connection
+require('dotenv').config();
+
+const { MASTER_USERNAME,
+        DB_NAME,
+        DB_PASSWORD,
+        DB_PORT,
+        DB_URI
+    } = process.env;
 
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('accountable', 'root', '', {
-    host: '127.0.0.1',
+const sequelize = new Sequelize(DB_NAME, MASTER_USERNAME, DB_PASSWORD, {
+    host: DB_URI,
     dialect: 'mysql'
 });
 
