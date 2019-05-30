@@ -40,6 +40,10 @@ const Classes = sequelize.define('class', {
     students: {
         type: Sequelize.JSON,
     },
+    teacherID: {
+        type: Sequelize.INTEGER,
+        references: { model: 'teachers', key: 'id' }
+    },
 });
 
 const Students = sequelize.define('student', {
@@ -58,6 +62,10 @@ const Students = sequelize.define('student', {
     },
     comments: {
         type: Sequelize.JSON,
+    },
+    classID: {
+        type: Sequelize.INTEGER,
+        references: {model: 'classes', key: 'id'}
     },
 });
 
