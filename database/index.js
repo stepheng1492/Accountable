@@ -3,6 +3,7 @@
 // exprt connection
 
 const Sequelize = require('sequelize');
+const bcrypt = require('bcrypt');
 const sequelize = new Sequelize('accountable', 'root', '', {
     host: 'localhost',
     dialect: 'mysql'
@@ -30,7 +31,21 @@ const Teachers = sequelize.define('teacher', {
     school: {
         type: Sequelize.STRING,
     },
+    username: {
+        type: Sequelize.STRING,
+    },
+    password: {
+        type: Sequelize.STRING,
+    },
 });
+
+// Teachers.methods.hashPassword = function(password) {
+//     return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+// }
+
+// Teachers.methods.comparePassword = function(password, hash) {
+//     return bcrypt.compareSync(password, hash);
+// }
 
 const Classes = sequelize.define('class', {
     // name, students 
