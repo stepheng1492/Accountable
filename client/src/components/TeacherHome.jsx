@@ -42,6 +42,10 @@ class TeacherHome extends React.Component {
        return axios.get('/teachers')
     }
 
+    getClassData() {
+        return axios.get('/classes');
+    }
+
     componentDidMount() {
         // show current teacher name and ID -- set the state
         this.getTeacherData()
