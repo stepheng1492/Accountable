@@ -8,14 +8,8 @@ const { MASTER_USERNAME,
     } = process.env;
 
 const Sequelize = require('sequelize');
-<<<<<<< HEAD
-const bcrypt = require('bcrypt');
-const sequelize = new Sequelize('accountable', 'root', '', {
-    host: 'localhost',
-=======
 const sequelize = new Sequelize(DB_NAME, MASTER_USERNAME, DB_PASSWORD, {
     host: DB_URI,
->>>>>>> 6969ac147345b93d1f2d8b79ac1ab8085f7fa09f
     dialect: 'mysql'
 });
 
