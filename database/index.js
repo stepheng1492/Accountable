@@ -8,8 +8,8 @@ const { MASTER_USERNAME,
     } = process.env;
 
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize(DB_NAME, MASTER_USERNAME, DB_PASSWORD, {
-    host: DB_URI,
+const sequelize = new Sequelize('accountable', 'root', '', {
+    host: 'localhost',
     dialect: 'mysql'
 });
 
