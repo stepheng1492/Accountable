@@ -16,3 +16,6 @@
 // });
 
 // module.exports = router;
+exports.index = function(req, res) {
+    res.render('views/login.ejs')
+}
