@@ -9,7 +9,7 @@ class TeacherHome extends React.Component {
         this.state = {
             currentTeacherId: 0,
             currentTeacherName: '',
-            currentTeacherClasses: [],
+            currentTeacherClasses: [1, 2, 3, 4],
             inputState: '',
         };
         this.getTeacherData = this.getTeacherData.bind(this);
@@ -81,7 +81,7 @@ class TeacherHome extends React.Component {
                 <div>
                     <input placeholder="add class here" onChange={this.changeInputState}></input>
                     <button onClick={this.submitClassHandler}>Add Class</button>
-                    <Classes teacherName={this.state.currentTeacherName}/>
+                    <Classes teacherName={this.state.currentTeacherName} classList={this.state.currentTeacherClasses}/>
                 </div>
             </div>
         )
