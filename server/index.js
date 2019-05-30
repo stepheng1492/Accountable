@@ -3,6 +3,7 @@ const db = require('../database/index')
 const port = 3000;
 const path = require('path');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser')
 
 const app = express();
 app.use(bodyParser.json());
@@ -11,18 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client/dist')));
-app.use(express.session({secret: 'thesecret'}))
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(app.router);
-// app.use(session({
-//     secret:'thesecret',
-//     saveUninitialized:false,
-//     resave:false,
-// }));
 
-// app.use('/', index);
-// app.use('/users', users);
 
 // post request handler for adding classes
 app.post('/classes', (req, res) => {
