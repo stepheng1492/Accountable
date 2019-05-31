@@ -83,7 +83,7 @@ class TeacherHome extends React.Component {
     render() {
         return (
             <div>
-                <h1>Accountable</h1>
+                <h1 className='title'>Accountable</h1>
                 <h4>Teacher Name: {this.state.currentTeacherName}</h4>
                 <h5>Teacher ID: {this.state.currentTeacherId}</h5>
                 <div>
