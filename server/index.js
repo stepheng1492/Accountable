@@ -54,7 +54,6 @@ app.post('/comments', (req, res) => {
     db.models.Comments.create({
         studentID: req.body.studentID,
         comment: req.body.comment,
-        date: new Date(),
     })
     .then(() => {
         console.log('comment data successfully saved in database');
