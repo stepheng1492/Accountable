@@ -15,6 +15,7 @@ class Students extends React.Component {
         this.changeStudentData = this.changeStudentData.bind(this);
     }
 
+
     // add students to database
     addStudents() {
         const { name, parentName, parentEmail, parentPhone } = this.state        
@@ -38,7 +39,7 @@ class Students extends React.Component {
     render() {
         return(
             <div>
-                <h1>Add Student to {}</h1>
+                <h1>Add Student to {this.props.className}</h1>
                 <input placeholder="student name" name="name" onChange={this.changeStudentData}></input>
                 <input placeholder="parent name" onChange={this.changeStudentData} name="parentName"></input>
                 <input placeholder="parent phone" onChange={this.changeStudentData} name="parentPhone"></input>
