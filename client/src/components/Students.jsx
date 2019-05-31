@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import CommentForm from './CommentForm.jsx'
 
 class Students extends React.Component {
     constructor(props) {
@@ -10,10 +11,13 @@ class Students extends React.Component {
             parentName: '',
             parentPhone: '',
             parentEmail: '',
+            renderCommentForm: false,
+            currentStudent: {},
         }
         this.addStudents = this.addStudents.bind(this);
         this.changeStudentData = this.changeStudentData.bind(this);
         this.getStudents = this.getStudents.bind(this);
+        this.addComment = this.addComment.bind(this);
     }
 
     // get student data based on class ID, load it into students array on comp mount
@@ -54,6 +58,26 @@ class Students extends React.Component {
         })
     }
 
+    addComment(e) {
+        // when button is clicked,
+        // get student in that row and set state of current student to that student
+        let studentID = parseInt(e.target.name);
+        let studentObj = {};
+        this.state.students.map(student => {
+            if (student.id === studentID) {
+                this.setState({
+                    currentStudent: student,
+                }, function() {
+                        this.setState({
+                            renderCommentForm: !this.state.renderCommentForm,
+                        })
+                })
+            }
+        })
+    
+    }
+
+
     render() {
         return(
             <div>
@@ -70,7 +94,7 @@ class Students extends React.Component {
                             <th>Parent Name</th>
                             <th>Parent Phone</th>
                             <th>Parent Email</th>
-                            <th>Add Comment</th>
+                            <th>Comments</th>
                         </tr>
                         {
                             // map through students
@@ -81,12 +105,14 @@ class Students extends React.Component {
                                    <td>{student.parentName || 'no parent name'}</td>
                                    <td>{student.phone || 'no phone number'}</td>
                                    <td>{student.email || 'no email'}</td>
-                                   <button>add comment</button>
+                                   <button name={student.id} onClick={this.addComment}>add comment</button>
+                                   <button>Show Comment History</button>
                                </tr>)
                             })
                         }
                     </thead>
                 </table>
+                {this.state.renderCommentForm ? <CommentForm student={this.state.currentStudent}/> : null}
             </div>
         );
     }
