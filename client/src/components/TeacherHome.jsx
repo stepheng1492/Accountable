@@ -9,7 +9,7 @@ class TeacherHome extends React.Component {
         this.state = {
             currentTeacherId: 0,
             currentTeacherName: '',
-            currentTeacherClasses: [1, 2, 3, 4],
+            currentTeacherClasses: [],
             inputState: '',
         };
         this.getTeacherData = this.getTeacherData.bind(this);
@@ -35,6 +35,14 @@ class TeacherHome extends React.Component {
         axios.post('/classes', {
             className,
             id: this.state.currentTeacherId,
+        })
+        .then(() => {
+            this.getClassData()
+                .then(data => {
+                    this.setState({
+                        currentTeacherClasses: data.data,
+                    })
+                });
         })
     }
 
@@ -81,7 +89,7 @@ class TeacherHome extends React.Component {
                 <div>
                     <input placeholder="add class here" onChange={this.changeInputState}></input>
                     <button onClick={this.submitClassHandler}>Add Class</button>
-                    <Classes teacherName={this.state.currentTeacherName} classList={this.state.currentTeacherClasses}/>
+                    <Classes teacherID={this.state.currentTeacherId} teacherName={this.state.currentTeacherName} classList={this.state.currentTeacherClasses}/>
                 </div>
             </div>
         )
