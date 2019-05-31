@@ -29,9 +29,6 @@ const Teachers = sequelize.define('teacher', {
     name: {
         type: Sequelize.STRING,
     },
-    classes: {
-        type: Sequelize.JSON,
-    },
     school: {
         type: Sequelize.STRING,
     },
