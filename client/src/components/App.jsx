@@ -53,7 +53,7 @@ class App extends Component {
 
     render() {
         let authButton = this.state.user ?
-            <TeacherHome logout={this.logout}/> :
+            <TeacherHome user={this.state.user} logout={this.logout}/> :
             <button onClick={this.login}>Log In</button>
 
         return (

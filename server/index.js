@@ -123,7 +123,11 @@ app.get('/comments', (req, res) => {
 
 app.get('/teachers', (req, res) => {
     // right now, query database and send back the test teacher
-    db.models.Teachers.findAll()
+    db.models.Teachers.findAll({
+        where: {
+            email: req.query.email,
+        }
+    })
     .then((data) => {
         res.send(data);
     })
