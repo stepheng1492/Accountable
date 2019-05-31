@@ -4,6 +4,7 @@ import withFirebaseAuth from 'react-with-firebase-auth'
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import { auth, provider } from '../firebaseConfig.js';
+import TeacherHome from './TeacherHome.jsx';
 
 // const firebaseApp = firebase.initializeApp(firebaseConfig);
 
@@ -46,7 +47,7 @@ class App extends Component {
 
     render() {
         let authButton = this.state.user ?
-            <button onClick={this.logout}>Log Out</button> :
+            <TeacherHome logout={this.logout}/> :
             <button onClick={this.login}>Log In</button>
 
         return (
@@ -55,31 +56,6 @@ class App extends Component {
             </div>
         )
     }
-    // render() {
-    //     const {
-    //         user,
-    //         signOut,
-    //         signInWithGoogle
-    //     } = this.props;
-
-    //     return (
-    //         <div className="App">
-    //             <header className="App-header">
-    //                 {
-    //                     user
-    //                         ? <p>Hello, {user.displayName}</p>
-    //                         : <p>Please sign in.</p>
-    //                 }
-
-    //                 {
-    //                     user
-    //                         ? <button onClick={this.signOut}>Sign out</button>
-    //                         : <button onClick={this.signInWithGoogle}>Sign in With Google</button>
-    //                 }
-    //             </header>
-    //         </div>
-    //     )
-    // }
 }
 
 // const firebaseAppAuth = firebaseApp.auth();
