@@ -88,6 +88,7 @@ class TeacherHome extends React.Component {
                 <h5>Teacher ID: {this.state.currentTeacherId}</h5>
                 <div>
                     <input placeholder="add class here" onChange={this.changeInputState}></input>
+                    <button onClick={this.props.logout}>Log Out</button>
                     <button onClick={this.submitClassHandler}>Add Class</button>
                     <Classes teacherID={this.state.currentTeacherId} teacherName={this.state.currentTeacherName} classList={this.state.currentTeacherClasses}/>
                 </div>
@@ -96,4 +97,5 @@ class TeacherHome extends React.Component {
     }
 }
 
-ReactDOM.render(<TeacherHome />, document.getElementById('app'));
+export default TeacherHome
+// ReactDOM.render(<TeacherHome />, document.getElementById('app'));
