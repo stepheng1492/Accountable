@@ -29,7 +29,7 @@ const Teachers = sequelize.define('teacher', {
     name: {
         type: Sequelize.STRING,
     },
-    school: {
+    email: {
         type: Sequelize.STRING,
     },
 });
@@ -76,25 +76,6 @@ const Comments = sequelize.define('comment', {
         type: Sequelize.TEXT,
     },
 });
-
-Comments.sync()
-.then(() => {
-    return Classes.sync();
-})
-.then(() => {
-    return Students.sync()
-})
-.then(() => {
-    return Teachers.sync()
-       
-})
-.catch((err) => {
-    console.error(err);
-})
-
-
-
-
 
 module.exports.models = {
     Teachers,

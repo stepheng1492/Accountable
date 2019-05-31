@@ -4,3 +4,16 @@
 .title {
     text-align: center;
 }
+
+.loginButton {
+    text-align: center;
+    padding-top: 250px;
+}
+
+.addStudentContainer {
+    display: flex
+}
+
+.addStudentContainer input {
+    flex: 2
+}
