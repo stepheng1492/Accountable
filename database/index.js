@@ -77,14 +77,6 @@ const Comments = sequelize.define('comment', {
     },
 });
 
-<<<<<<< HEAD
-
-
-
-
-
-=======
->>>>>>> a0b847ed01ecb6f0d82195273ac4ee6ede7e8ca4
 
 module.exports.models = {
     Teachers,

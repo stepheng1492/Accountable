@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import CommentForm from './CommentForm.jsx'
+import CommentHistory from './CommentHistory.jsx'
 
 class Students extends React.Component {
     constructor(props) {
@@ -13,11 +14,13 @@ class Students extends React.Component {
             parentEmail: '',
             renderCommentForm: false,
             currentStudent: {},
+            renderCommentHistory: false,
         }
         this.addStudents = this.addStudents.bind(this);
         this.changeStudentData = this.changeStudentData.bind(this);
         this.getStudents = this.getStudents.bind(this);
         this.addComment = this.addComment.bind(this);
+        this.showCommentHistory = this.showCommentHistory.bind(this);
     }
 
     // get student data based on class ID, load it into students array on comp mount
@@ -62,7 +65,6 @@ class Students extends React.Component {
         // when button is clicked,
         // get student in that row and set state of current student to that student
         let studentID = parseInt(e.target.name);
-        let studentObj = {};
         this.state.students.map(student => {
             if (student.id === studentID) {
                 this.setState({
@@ -75,6 +77,24 @@ class Students extends React.Component {
             }
         })
     
+    }
+
+    showCommentHistory(e) {
+        let studentID = parseInt(e.target.name);
+        // set the state of currentStudent
+        // pass down to commenthistory
+        // render comment history
+        this.state.students.map(student => {
+            if (student.id === studentID) {
+                this.setState({
+                    currentStudent: student,
+                }, function () {
+                    this.setState({
+                        renderCommentHistory: !this.state.renderCommentHistory,
+                    })
+                })   
+            }
+        })
     }
 
 
@@ -106,13 +126,14 @@ class Students extends React.Component {
                                    <td>{student.phone || 'no phone number'}</td>
                                    <td>{student.email || 'no email'}</td>
                                    <button name={student.id} onClick={this.addComment}>add comment</button>
-                                   <button>Show Comment History</button>
+                                   <button name={student.id} onClick={this.showCommentHistory}>Show Comment History</button>
                                </tr>)
                             })
                         }
                     </thead>
                 </table>
                 {this.state.renderCommentForm ? <CommentForm student={this.state.currentStudent}/> : null}
+                {this.state.renderCommentHistory ? <CommentHistory student={this.state.currentStudent}/> : null}
             </div>
         );
     }
