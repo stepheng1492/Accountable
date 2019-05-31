@@ -5,6 +5,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import { auth, provider } from '../firebaseConfig.js';
 import TeacherHome from './TeacherHome.jsx';
+import '../../styles/styles.css'
 
 // const firebaseApp = firebase.initializeApp(firebaseConfig);
 
