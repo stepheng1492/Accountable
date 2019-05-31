@@ -48,7 +48,11 @@ class TeacherHome extends React.Component {
 
     getTeacherData() {
         // axios get to teachers -- right now just get the one teacher in the database
-       return axios.get('/teachers')
+       return axios.get('/teachers', {
+           params: {
+               email: this.props.user.email,
+           }
+       })
     }
 
     getClassData() {
