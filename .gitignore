@@ -61,3 +61,5 @@ typings/
 .next
 
 client/dist/bundle.js
+
+client/src/firebaseConfig.js
