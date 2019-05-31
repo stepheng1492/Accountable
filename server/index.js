@@ -38,6 +38,7 @@ app.post('/students', (req, res) => {
         parentName: req.body.parentName,
         phone: req.body.phone,
         email: req.body.email,
+        classID: req.body.classID
     })
     .then(() => {
         console.log('Student data saved in database successfully');
