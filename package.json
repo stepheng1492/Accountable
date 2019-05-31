@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/omarrashid2/Accountable#readme",
   "dependencies": {
+    "@babel/preset-env": "^7.4.5",
     "axios": "^0.18.0",
     "bcrypt": "^3.0.6",
     "bcrypt-nodejs": "0.0.3",

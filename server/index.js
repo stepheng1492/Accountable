@@ -3,14 +3,22 @@ const db = require('../database/index')
 const port = 3000;
 const path = require('path');
 const bodyParser = require('body-parser');
+<<<<<<< HEAD
 // const cookieParser = require('cookie-parser')
+=======
+//const cookieParser = require('cookie-parser')
+>>>>>>> e633de6fcf4d6a1dcd628db3c376099f5390f7ee
 
 const app = express();
 app.use(bodyParser.json());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:false }));
+<<<<<<< HEAD
 // app.use(cookieParser());
+=======
+//app.use(cookieParser());
+>>>>>>> e633de6fcf4d6a1dcd628db3c376099f5390f7ee
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 
