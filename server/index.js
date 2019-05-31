@@ -133,4 +133,27 @@ app.get('/teachers', (req, res) => {
     })
 })
 
+// post handler for login -- adding teacher email and name for each teacher to db
+
+app.post('/login', (req, res) => {
+    console.log(req.body);
+    db.models.Teachers.destroy({
+        where: {
+            email: req.body.email,
+        }
+    })
+    db.models.Teachers.create({
+        name: req.body.name,
+        email: req.body.email,
+    })
+    .then(() => {
+        console.log('Teacher information successfully saved in the database')
+        res.sendStatus(201);
+    })
+    .catch((err) => {
+        console.log('error saving teacher info to database', err);
+        res.sendStatus(500);
+    })
+})
+
 app.listen(port, () => console.log(`Our app listening on port ${port}!`))
