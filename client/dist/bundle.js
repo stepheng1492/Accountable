@@ -105,7 +105,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const firebase = __webpack_require__(/*! firebase/app */ \"./node_modules/firebase/app/dist/index.cjs.js\");\n\nconst config = {\n    apiKey: \"AIzaSyCbYYSdnBfajUrANE5S36uJDvz2Zt2vQ5c\",\n    authDomain: \"accountable-7852c.firebaseapp.com\",\n    databaseURL: \"https://accountable-7852c.firebaseio.com\",\n    projectId: \"accountable-7852c\",\n    storageBucket: \"accountable-7852c.appspot.com\",\n    messagingSenderId: \"571094616529\",\n    appId: \"1:571094616529:web:4fe12958e82efff3\",\n};\n\nfirebase.initializeApp(config);\n\nconst provider = new firebase.auth.GoogleAuthProvider()\nconst auth = firebase.auth();\n\nmodule.exports = {\n    firebase,\n    provider,\n    auth\n}\n\n//# sourceURL=webpack:///./client/src/firebaseConfig.js?");
+eval("const firebase = __webpack_require__(/*! firebase/app */ \"./node_modules/firebase/app/dist/index.cjs.js\");\n\n\n\nfirebase.initializeApp(config);\n\nconst provider = new firebase.auth.GoogleAuthProvider()\nconst auth = firebase.auth();\n\nmodule.exports = {\n    firebase,\n    provider,\n    auth\n}\n\n//# sourceURL=webpack:///./client/src/firebaseConfig.js?");
 
 /***/ }),
 
