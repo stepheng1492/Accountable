@@ -13,8 +13,26 @@ class Students extends React.Component {
         }
         this.addStudents = this.addStudents.bind(this);
         this.changeStudentData = this.changeStudentData.bind(this);
+        this.getStudents = this.getStudents.bind(this);
     }
 
+    // get student data based on class ID, load it into students array on comp mount
+    getStudents() {
+        return axios.get('/students', {
+            params: {
+                classID: this.props.classID,
+            }
+        })
+    }
+
+    componentDidMount() {
+        this.getStudents()
+        .then((data) => {
+            this.setState({
+                students: data.data,
+            })
+        })
+    }
 
     // add students to database
     addStudents() {
@@ -54,6 +72,19 @@ class Students extends React.Component {
                             <th>Parent Email</th>
                             <th>Add Comment</th>
                         </tr>
+                        {
+                            // map through students
+                            // for each student, create a row
+                            this.state.students.map(student => {
+                               return (<tr>
+                                   <td>{student.name || 'no name given'}</td>
+                                   <td>{student.parentName || 'no parent name'}</td>
+                                   <td>{student.phone || 'no phone number'}</td>
+                                   <td>{student.email || 'no email'}</td>
+                                   <button>add comment</button>
+                               </tr>)
+                            })
+                        }
                     </thead>
                 </table>
             </div>
