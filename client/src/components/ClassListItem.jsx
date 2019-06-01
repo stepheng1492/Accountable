@@ -27,17 +27,15 @@ class ClassListItem extends React.Component {
         return (
             <div>
                 <ul className="studentList">
-                <li onClick={this.handleClassItemClick}>
-                <ul>
-                <li className="something-else" onClick={this.handleClassItemClick}>
-                    {this.props.eachClass.name}
-                </li>
-                {this.state.studentRender ? <Students className={this.props.eachClass.name} classID={this.props.eachClass.id}/> : null}
+                    <li className="something-else" onClick={this.handleClassItemClick}>
+                        {this.props.eachClass.name}
+                    </li>
+                    {this.state.studentRender ? <Students className={this.props.eachClass.name} classID={this.props.eachClass.id} /> : null}
                 </ul>
-                    
             </div>
-        )
+        );
     }
+
 }
 
 export default ClassListItem;
