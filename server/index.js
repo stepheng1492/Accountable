@@ -138,11 +138,7 @@ app.get('/teachers', (req, res) => {
 // post handler for login -- adding teacher email and name for each teacher to db
 
 app.post('/login', (req, res) => {
-  db.models.Teachers.destroy({
-    where: {
-      email: req.body.email,
-    },
-  });
+  
   db.models.Teachers.create({
     name: req.body.name,
     email: req.body.email,

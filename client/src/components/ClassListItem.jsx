@@ -26,7 +26,7 @@ class ClassListItem extends React.Component {
     render() {
         return (
             <div>
-                <ul>
+                <ul className="studentList">
                 <li onClick={this.handleClassItemClick}>
                     {this.props.eachClass.name}
                 </li>

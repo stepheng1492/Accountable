@@ -19,7 +19,6 @@ class Students extends React.Component {
             renderCommentForm: false,
             currentStudent: {},
             renderCommentHistory: false,
-            studentView: false,
         }
         this.addStudents = this.addStudents.bind(this);
         this.changeStudentData = this.changeStudentData.bind(this);
@@ -112,22 +111,20 @@ class Students extends React.Component {
 
 
     render() {
-        if (this.state.studentView) {
             return (
-                <div>
-                <div className="addStudentContainer">
-                    {/* <input placeholder="student name" name="name" onChange={this.changeStudentData}></input>
-                    <input placeholder="parent name" onChange={this.changeStudentData} name="parentName"></input>
-                    <input placeholder="parent phone" onChange={this.changeStudentData} name="parentPhone"></input>
-                <input placeholder="parent email" onChange={this.changeStudentData} name="parentEmail"></input> */}
-                    <Button className="btn btn-sm btn-dark" onClick={this.toggleStudents}>View Students</Button>
-                    {/* <Button className="btn btn-sm btn-dark" onClick={this.addStudents}>Add Student</Button> */}
-                    <StudentModal />
-                    <br />
-                </div>
-                <br />
+                <div className="studentListDiv">
+                    <div className="addStudentContainer">
+                        <StudentModal />
+                    </div>
                 <table className="table table-hover table-sm table-condensed">
                     <thead className="thead-dark">
+                            <tr>
+                                <th>Name</th>
+                                <th>Guardian</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                            </tr>
+                            </thead>
                         <tbody>
                         {/* <tr> */}
                             {/* <th>Student Name</th> */}
@@ -137,8 +134,6 @@ class Students extends React.Component {
                         <th>Comments</th> */}
                         {/* </tr> */}
                         {
-                            // map through students
-                            // for each student, create a row
                             this.state.students.map(student => {
                                 return (
                                     <tr className="student-row">
@@ -155,20 +150,19 @@ class Students extends React.Component {
                             })
                         }
                         </tbody>
-                    </thead>
                 </table>
                 {this.state.renderCommentForm ? <CommentForm student={this.state.currentStudent} /> : null}
                 {this.state.renderCommentHistory ? <CommentHistory student={this.state.currentStudent} /> : null}
             </div>
-        );
-        } else {
-            return (
-                <div>
-                <Button padding="3px" className="btn btn-sm btn-dark" onClick={this.toggleStudents}>View Students</Button>
-                <StudentModal classID={this.props.classID}/>
-                </div>
-            )
-        }
+        ); 
+        // else {
+        //     return (
+        //         <div>
+        //         <Button padding="3px" className="btn btn-sm btn-dark" onClick={this.toggleStudents}>View Students</Button>
+        //         <StudentModal classID={this.props.classID}/>
+        //         </div>
+        //     )
+        // }
     }
 }
 
