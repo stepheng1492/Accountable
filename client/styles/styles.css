@@ -19,8 +19,7 @@
 }
 
 .container {
-    /* background-color: linen; */
-    background-image: "https://designshack.net/wp-content/uploads/best-subtle-black-white-background-textures.jpg";
+    background-color: linen;
     display: flex;
 }
 
@@ -139,4 +138,12 @@ blockquote {
         height: 3em;
         background-color: #78bfe0;
         border-radius: 5%;
+    }
+
+    .commentTable {
+        padding-right: 15px;
+    }
+
+    #history {
+        padding-left: -20px;
     }

@@ -6,6 +6,8 @@ import ModalTitle from 'react-bootstrap/ModalTitle';
 import ModalBody from 'react-bootstrap/ModalBody';
 import ModalFooter from 'react-bootstrap/ModalFooter';
 import axios from 'axios';
+const moment = require('moment');
+
 
 class CommentModal extends React.Component {
     constructor(props, context) {
@@ -92,8 +94,9 @@ class CommentModal extends React.Component {
                 {this.state.comments.map(comment => {
                   return (
                     <tr>
-                      <td>{comment.createdAt}</td>
-                      <td>{comment.comment}</td>
+                      {/* {console.log(moment().format('dddd, MMMM, Do'))} */}
+                      <td className="commentTable">{comment.comment}</td>
+                      <td className="commentTable">{moment().format('ddd, MMM, Do')}</td>
                     </tr>
                   );
                 })}
@@ -116,11 +119,11 @@ class CommentModal extends React.Component {
             onHide={this.handleHide}
             dialogClassName="modal-90w"
           >
-            <ModalHeader closeButton>
+            <ModalHeader >
               <ModalTitle id="title">
               </ModalTitle>
               <Button className="btn btn-sm btn-dark" onClick={this.showHistory} id="history">View Comment History</Button>
-              or
+              
               <Button className="btn btn-sm btn-dark" onClick={this.newComment} id="newComment">Leave a Comment</Button>
             </ModalHeader>
             <ModalBody>
