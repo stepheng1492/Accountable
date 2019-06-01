@@ -157,9 +157,19 @@ blockquote {
     }
 
     .commentTable {
-        padding-right: 15px;
+        width: 100%;
+        border-spacing: 10px;
+        border-collapse: separate;
     }
 
     #history {
         padding-left: -20px;
     }
+    .tableHead {
+        font-weight: bold;
+    }
+
+    .tableRows {
+        padding: 10px;
+    }
+

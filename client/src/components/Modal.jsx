@@ -91,15 +91,24 @@ class CommentModal extends React.Component {
         if (this.state.history) {
             whichRendered = (<div>
                 <h3>Comment History for {this.props.currentStudent.name}</h3>
+                <table className="comentTable">
+                  <thead>
+                    <tr>
+                    <td className="tableHead tableRows">Comment</td>
+                    <td className="tableHead tableRows">Date</td>
+                    </tr>
+                  </thead>
                 {this.state.comments.map(comment => {
                   return (
+                    <tbody>
                     <tr>
-                      {/* {console.log(moment().format('dddd, MMMM, Do'))} */}
-                      <td className="commentTable">{comment.comment}</td>
-                      <td className="commentTable">{moment().format('ddd, MMM, Do')}</td>
+                        <td className="tableRows">{comment.comment}</td>
+                      <td className="tableRows">{moment().format('ddd, MMM, Do')}</td>
                     </tr>
+                    </tbody>
                   );
                 })}
+                </table>
             </div>);
             
         } else if (this.state.newComment) {
