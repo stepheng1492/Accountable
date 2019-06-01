@@ -143,9 +143,9 @@ class Students extends React.Component {
                                 return (
                                     <tr className="student-row">
                                     <td>{student.name || 'N/A'}</td>
-                                    {/* <td>{student.parentName || 'no parent name'}</td>
+                                    <td>{student.parentName || 'no parent name'}</td>
                                     <td>{student.phone || 'no phone number'}</td>
-                                <td>{student.email || 'no email'}</td> */}
+                                <td>{student.email || 'no email'}</td>
                                     {/* <button name={student.id} onClick={this.addComment}>Student Comments</button> */}
                                     {/* onClick={this.addComment} */}
                                     <Modal  currentStudent={student} name={student.name}/>
@@ -165,7 +165,7 @@ class Students extends React.Component {
             return (
                 <div>
                 <Button padding="3px" className="btn btn-sm btn-dark" onClick={this.toggleStudents}>View Students</Button>
-                <StudentModal />
+                <StudentModal classID={this.props.classID}/>
                 </div>
             )
         }
