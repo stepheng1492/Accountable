@@ -4,3 +4,138 @@
 .title {
     text-align: center;
 }
+
+/* .loginButton {
+    text-align: center;
+    padding-top: 250px;
+} */
+
+.addStudentContainer {
+    /* display: flex */
+}
+
+.addStudentContainer input {
+    /* flex: 2 */
+}
+
+.container {
+    background-color: linen;
+    display: flex;
+}
+
+.student-row {
+    height: 5px;
+}
+
+
+.quotecontainer {
+    width: 400px;
+    margin: 140px auto;
+    position: relative;
+    top: -100px;
+    left: 350px
+}
+
+blockquote {
+    width: 565px;
+    font: 2em CallunaRegular;
+    letter-spacing: .09em;
+    float: left;
+    padding: 45px 0 30px 25px;
+    margin: 0;
+    border-top: 2px dotted #858585;
+    border-bottom: 2px dotted #858585;
+    -webkit-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+}
+
+.quotecontainer:before {
+    content: "“";
+    font-size: 3em;
+    position: absolute;
+    left: -10px;
+    color: #572137;
+    top: 25px;
+}
+
+.quotecontainer:after {
+    content: "”";
+    font-size: 3em;
+    position: absolute;
+    right: -200px;
+    top: 50px;
+    color: #572137;
+}
+
+    blockquote:first-line {
+        font: 1em "Sketch Block";
+        color: #2e87b1;
+    }
+
+    blockquote:first-letter {
+        font-size: 2.35em;
+        text-transform: lowercase;
+        float: left;
+        line-height: 0.75em;
+        margin-right: -18px;
+        position: relative;
+        z-index: 1;
+        top: -40px;
+    }
+
+    blockquote strong:first-child {
+        margin-left: 8px;
+        letter-spacing: 0;
+    }
+
+    blockquote strong:last-child {
+        font: 1em "Museo 700";
+        text-transform: uppercase;
+        letter-spacing: 0;
+    }
+
+    blockquote em {
+        border-bottom: 2px dotted #572137;
+    }
+
+    blockquote + b {
+        float: right;
+        margin-top: 10px;
+        font: 1em CallunaRegular;
+        letter-spacing: .15em;
+    }
+
+    blockquote + b:first-letter {
+        color: #2e87b1;
+        font-size: 1em;
+        font-style: italic;
+        letter-spacing: .25em;
+    }
+
+    @-moz-document url-prefix() { 
+
+        blockquote:first-letter {
+            margin-top: -29px;
+        }
+
+    }
+
+    .greeting {
+        color: #257397;
+        position: absolute;
+    }
+
+    .classes {
+        color: #257397
+    }
+
+    .btn {
+        color: #eaeff1;
+        background-color: #78bfe0
+    }
+
+    .loginButton {
+        height: 3em;
+        background-color: #78bfe0;
+        border-radius: 5%;
+    }
