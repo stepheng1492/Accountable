@@ -5,6 +5,7 @@ import ModalHeader from 'react-bootstrap/ModalHeader';
 import ModalTitle from 'react-bootstrap/ModalTitle';
 import ModalBody from 'react-bootstrap/ModalBody';
 import ModalFooter from 'react-bootstrap/ModalFooter';
+import axios from 'axios';
 
 class CommentModal extends React.Component {
     constructor(props, context) {
@@ -14,6 +15,8 @@ class CommentModal extends React.Component {
         show: false,
         history: false,
         newComment: false,
+        commentText: '',
+        comments: [],
       };
   
       this.handleShow = () => {
@@ -26,6 +29,11 @@ class CommentModal extends React.Component {
 
       this.showHistory = this.showHistory.bind(this);
       this.newComment = this.newComment.bind(this);
+
+      this.getComments = this.getComments.bind(this);
+
+      this.submitComment = this.submitComment.bind(this);
+      this.changeComment = this.changeComment.bind(this);
     }
 
     showHistory() {
@@ -41,22 +49,62 @@ class CommentModal extends React.Component {
             history: false,
         })
     }
+
+  submitComment() {
+    console.log()
+    axios.post('/comments', {
+      // on bodt, need comment text
+      studentID: this.props.currentStudent.id,
+      comment: this.state.commentText,
+    })
+  }
+
+  changeComment(e) {
+    this.setState({
+      commentText: e.target.value,
+    })
+  }
+
+  getComments() {
+    return axios.get('/comments', {
+      params: {
+        studentID: this.props.currentStudent.id,
+      }
+    })
+  }
+
+
+  componentDidMount() {
+    this.getComments()
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          comments: data.data,
+        })
+      })
+  }
   
     render() {
         let whichRendered;
         if (this.state.history) {
-            whichRendered = <div>
-                <p>History Test and other things that can be considered a test. These just 
-                    keep going and going and going and going until I just can't think of anything
-                    else to type in so I will just stop I guess. How much wood would a wood-chuck
-                    chuck if a wood-chuck could chuck wood?
-                </p>
-            </div>
+            whichRendered = (<div>
+                <h3>Comment History for {this.props.currentStudent.name}</h3>
+                {this.state.comments.map(comment => {
+                  return (
+                    <tr>
+                      <td>{comment.createdAt}</td>
+                      <td>{comment.comment}</td>
+                    </tr>
+                  );
+                })}
+            </div>);
             
         } else if (this.state.newComment) {
-            whichRendered = <div>
-                <p>Fuzzy Wuzzee was a bear. Fuzzee Wuzzee had no hair. Fuzzee Wuzzee wasn't fuzzy, was he?</p>
-                </div>
+            whichRendered = (<div>
+              <h5>Add Comment for {this.props.name}</h5>
+              <input onChange={this.changeComment}></input>  
+              <button onClick={this.submitComment}>Submit Comment</button>              
+            </div>);
         }
       return (
         <>
@@ -76,9 +124,7 @@ class CommentModal extends React.Component {
               <Button className="btn btn-sm btn-dark" onClick={this.newComment} id="newComment">Leave a Comment</Button>
             </ModalHeader>
             <ModalBody>
-                <p>TEST</p>
                 {whichRendered}
-                
             </ModalBody>
             <ModalFooter>
                 <Button onClick={this.handleHide} className="btn btn-sm btn-dark">Close</Button>
