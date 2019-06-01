@@ -6,6 +6,7 @@
 
 .title {
     text-align: center;
+    color: #2e87b1;
 }
 
 .something-else:hover {
@@ -53,6 +54,7 @@
 
 .container {
     background-color: linen;
+    /* background-image: linear-gradient(rgba); */
     display: flex;
 }
 
@@ -185,9 +187,37 @@ blockquote {
     }
 
     .commentTable {
-        padding-right: 15px;
+        width: 100%;
+        border-spacing: 10px;
+        border-collapse: separate;
     }
 
     #history {
         padding-left: -20px;
     }
+<<<<<<< HEAD
+    .tableHead {
+        font-weight: bold;
+    }
+
+    .tableRows {
+        padding: 10px;
+    }
+
+=======
+
+    .header {
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+
+    .header h1 {
+        text-align: center;
+    }
+
+    .header button {
+        position: relative;
+        right: 0;
+    }
+>>>>>>> 804d095ca63fdf5d9ffa2ee6c4eb008205185a03

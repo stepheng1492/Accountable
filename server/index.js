@@ -139,9 +139,11 @@ app.get('/teachers', (req, res) => {
 
 app.post('/login', (req, res) => {
   
-  db.models.Teachers.create({
-    name: req.body.name,
-    email: req.body.email,
+  db.models.Teachers.findOrCreate({
+    where : {
+      name: req.body.name,
+      email: req.body.email,
+    }
   })
     .then(() => {
       console.log('Teacher information successfully saved in the database');
