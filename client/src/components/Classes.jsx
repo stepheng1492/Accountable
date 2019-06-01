@@ -1,14 +1,17 @@
 import React from 'react';
 import ClassListItem from './ClassListItem.jsx';
+import Button from 'react-bootstrap/Button';
+
 
 // classes is list of classes by teacher
 
 const Classes = (props) => {
     return (
         <div>
-            <h3>{props.teacherName}'s Classes</h3>
+            {/* <Button className="btn btn-sm btn-dark outline-danger">Add A Class</Button> */}
+            <h4 display="inline-block">Your Current Classes</h4>
             <div>
-                <h3>{props.classList.map((eachClass) => <ClassListItem eachClass={eachClass} />)}</h3>
+                <h5>{props.classList.map((eachClass) => <ClassListItem eachClass={eachClass} />)}</h5>
             </div>
         </div>
     );
