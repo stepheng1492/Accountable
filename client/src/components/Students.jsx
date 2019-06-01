@@ -123,6 +123,7 @@ class Students extends React.Component {
                                 <th>Guardian</th>
                                 <th>Phone</th>
                                 <th>Email</th>
+                                <th>Comments</th>
                             </tr>
                             </thead>
                         <tbody>
