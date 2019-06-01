@@ -88,14 +88,16 @@ class TeacherHome extends React.Component {
     render() {
         return (
             <div>
+                <div className="header">
+                    <h1 className='title'>Accountable</h1>
                 <button text-align="right" className="btn btn-dark btn-sm" onClick={this.props.logout}>Log Out</button>
-                <article className="quotecontainer">
+                    </div>
+                {/* <article className="quotecontainer">
                     <blockquote>
                         <strong>Accountability</strong> is <em>the measure</em> of a <strong>leaders height</strong>
                     </blockquote>
                     <b>Jeffrey Benjamin</b>
-                </article>
-                {/* <h1 className='title'>Accountable</h1> */}
+                </article> */}
                 <div className="greeting">
                     <h4>Welcome back, {this.state.currentTeacherName}</h4>
                 </div>

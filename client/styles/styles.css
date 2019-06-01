@@ -3,6 +3,7 @@
 
 .title {
     text-align: center;
+    color: #2e87b1;
 }
 
 .something-else:hover {
@@ -162,4 +163,19 @@ blockquote {
 
     #history {
         padding-left: -20px;
+    }
+
+    .header {
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+
+    .header h1 {
+        text-align: center;
+    }
+
+    .header button {
+        position: relative;
+        right: 0;
     }
