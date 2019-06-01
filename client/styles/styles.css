@@ -195,7 +195,6 @@ blockquote {
     #history {
         padding-left: -20px;
     }
-<<<<<<< HEAD
     .tableHead {
         font-weight: bold;
     }
@@ -204,7 +203,6 @@ blockquote {
         padding: 10px;
     }
 
-=======
 
     .header {
         display: flex;
@@ -220,4 +218,3 @@ blockquote {
         position: relative;
         right: 0;
     }
->>>>>>> 804d095ca63fdf5d9ffa2ee6c4eb008205185a03
