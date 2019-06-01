@@ -90,7 +90,7 @@ class TeacherHome extends React.Component {
             <div>
                 <div className="header">
                     <h1 className='title'>Accountable</h1>
-                <button text-align="right" className="btn btn-dark btn-sm" onClick={this.props.logout}>Log Out</button>
+                <button text-align="right" className="btn btn-sm" onClick={this.props.logout}>Log Out</button>
                     </div>
                 {/* <article className="quotecontainer">
                     <blockquote>
