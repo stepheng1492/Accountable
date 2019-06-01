@@ -37,23 +37,23 @@ class TeacherHome extends React.Component {
             className,
             id: this.state.currentTeacherId,
         })
-        .then(() => {
-            this.getClassData()
-                .then(data => {
-                    this.setState({
-                        currentTeacherClasses: data.data,
-                    })
-                });
-        })
+            .then(() => {
+                this.getClassData()
+                    .then(data => {
+                        this.setState({
+                            currentTeacherClasses: data.data,
+                        })
+                    });
+            })
     }
 
     getTeacherData() {
         // axios get to teachers -- right now just get the one teacher in the database
-       return axios.get('/teachers', {
-           params: {
-               email: this.props.user.email,
-           }
-       })
+        return axios.get('/teachers', {
+            params: {
+                email: this.props.user.email,
+            }
+        })
     }
 
     getClassData() {
@@ -67,39 +67,44 @@ class TeacherHome extends React.Component {
     componentDidMount() {
         // show current teacher name and ID -- set the state
         this.getTeacherData()
-        .then(data => {
-            const name = data.data[0].name;
-            const id = data.data[0].id;
-            this.setState({
-                currentTeacherId: id,
-                currentTeacherName: name,
-            })
-        })
-        .then(() => {
-            this.getClassData()
             .then(data => {
+                const name = data.data[0].name;
+                const id = data.data[0].id;
                 this.setState({
-                    currentTeacherClasses: data.data,
+                    currentTeacherId: id,
+                    currentTeacherName: name,
                 })
-            });
-        })
+            })
+            .then(() => {
+                this.getClassData()
+                    .then(data => {
+                        this.setState({
+                            currentTeacherClasses: data.data,
+                        })
+                    });
+            })
     }
 
     render() {
         return (
             <div>
-                    <button text-align="right" className="btn btn-dark btn-sm" onClick={this.props.logout}>Log Out</button>
-                <h1 className='title'>Accountable</h1>
-                <div>
-
-                <h4>Welcome back, {this.state.currentTeacherName}</h4>
+                <button text-align="right" className="btn btn-dark btn-sm" onClick={this.props.logout}>Log Out</button>
+                <article className="quotecontainer">
+                    <blockquote>
+                        <strong>Accountability</strong> is <em>the measure</em> of a <strong>leaders height</strong>
+                    </blockquote>
+                    <b>Jeffrey Benjamin</b>
+                </article>
+                {/* <h1 className='title'>Accountable</h1> */}
+                <div className="greeting">
+                    <h4>Welcome back, {this.state.currentTeacherName}</h4>
                 </div>
                 {/* <h5>Teacher ID: {this.state.currentTeacherId}</h5> */}
                 <br />
-                <div>
+                <div className="classes">
                     <button className="btn btn-dark btn-sm" onClick={this.submitClassHandler}>Add Class</button>
                     <input placeholder="new class name" onChange={this.changeInputState}></input>
-                    <Classes teacherID={this.state.currentTeacherId} teacherName={this.state.currentTeacherName} classList={this.state.currentTeacherClasses}/>
+                    <Classes teacherID={this.state.currentTeacherId} teacherName={this.state.currentTeacherName} classList={this.state.currentTeacherClasses} />
                 </div>
             </div>
         )
