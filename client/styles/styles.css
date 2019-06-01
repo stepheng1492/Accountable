@@ -150,10 +150,16 @@ blockquote {
         border-radius: 5%;
     }
 
-    /* .studentList {
-        display: flex;
-    } */
+  
 
     .studentListDiv {
         display: flex;
+    }
+
+    .commentTable {
+        padding-right: 15px;
+    }
+
+    #history {
+        padding-left: -20px;
     }

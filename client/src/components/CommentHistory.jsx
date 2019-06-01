@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+const moment = require('moment');
 
 class CommentHistory extends React.Component {
 
@@ -44,6 +45,8 @@ class CommentHistory extends React.Component {
                         return (
                             <tr>
                                 <td>{comment.createdAt}</td>
+                                {/* <td>{moment.format(comment.createdAt)}</td> */}
+                                {console.log(moment())}
                                 <td>{comment.comment}</td>
                             </tr>
                         );

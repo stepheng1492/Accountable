@@ -26,13 +26,10 @@ class ClassListItem extends React.Component {
     render() {
         return (
             <div>
-<<<<<<< HEAD
                 <ul className="studentList">
                 <li onClick={this.handleClassItemClick}>
-=======
                 <ul>
                 <li className="something-else" onClick={this.handleClassItemClick}>
->>>>>>> 3df17b273b6e9985ddf9052902d01e6262a90fa6
                     {this.props.eachClass.name}
                 </li>
                 {this.state.studentRender ? <Students className={this.props.eachClass.name} classID={this.props.eachClass.id}/> : null}
