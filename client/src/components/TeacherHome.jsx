@@ -88,14 +88,17 @@ class TeacherHome extends React.Component {
     render() {
         return (
             <div>
+                    <button text-align="right" className="btn btn-dark btn-sm" onClick={this.props.logout}>Log Out</button>
                 <h1 className='title'>Accountable</h1>
+                <div>
+
                 <h4>Welcome back, {this.state.currentTeacherName}</h4>
-                    <button className="btn btn-dark btn-sm" onClick={this.props.logout}>Log Out</button>
+                </div>
                 {/* <h5>Teacher ID: {this.state.currentTeacherId}</h5> */}
                 <br />
                 <div>
-                    <input placeholder="add class here" onChange={this.changeInputState}></input>
-                    <button className="btn btn-info btn-sm" onClick={this.submitClassHandler}>Add Class</button>
+                    <button className="btn btn-dark btn-sm" onClick={this.submitClassHandler}>Add Class</button>
+                    <input placeholder="new class name" onChange={this.changeInputState}></input>
                     <Classes teacherID={this.state.currentTeacherId} teacherName={this.state.currentTeacherName} classList={this.state.currentTeacherClasses}/>
                 </div>
             </div>

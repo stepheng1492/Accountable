@@ -5,6 +5,7 @@ import CommentHistory from './CommentHistory.jsx';
 import Button from 'react-bootstrap/Button';
 // import Modal from 'react-bootstrap/Modal';
 import Modal from './Modal.jsx';
+import StudentModal from './newStudentModal.jsx';
 
 class Students extends React.Component {
     constructor(props) {
@@ -18,13 +19,14 @@ class Students extends React.Component {
             renderCommentForm: false,
             currentStudent: {},
             renderCommentHistory: false,
+            studentView: false,
         }
         this.addStudents = this.addStudents.bind(this);
         this.changeStudentData = this.changeStudentData.bind(this);
         this.getStudents = this.getStudents.bind(this);
         this.addComment = this.addComment.bind(this);
         this.showCommentHistory = this.showCommentHistory.bind(this);
-        // this.modal = this.modal.bind(this);
+        this.toggleStudents = this.toggleStudents.bind(this);
     }
 
     // get student data based on class ID, load it into students array on comp mount
@@ -102,48 +104,52 @@ class Students extends React.Component {
         })
     }
 
+    toggleStudents() {
+        this.setState({
+            studentView: !this.state.studentView
+        })
+    }
+
 
     render() {
-        const { currentStudent, name } = this.state;
-        return (
-            <div>
-                {/* <h4>Add a new student to your {this.props.className} class</h4> */}
+        if (this.state.studentView) {
+            return (
+                <div>
                 <div className="addStudentContainer">
                     {/* <input placeholder="student name" name="name" onChange={this.changeStudentData}></input>
                     <input placeholder="parent name" onChange={this.changeStudentData} name="parentName"></input>
                     <input placeholder="parent phone" onChange={this.changeStudentData} name="parentPhone"></input>
-                    <input placeholder="parent email" onChange={this.changeStudentData} name="parentEmail"></input> */}
-                    <Button className="btn btn-sm btn-dark" onClick={this.addStudents}>Add Student</Button>
+                <input placeholder="parent email" onChange={this.changeStudentData} name="parentEmail"></input> */}
+                    <Button className="btn btn-sm btn-dark" onClick={this.toggleStudents}>View Students</Button>
+                    {/* <Button className="btn btn-sm btn-dark" onClick={this.addStudents}>Add Student</Button> */}
+                    <StudentModal />
                     <br />
                 </div>
                 <br />
-                <table className="table table-bordered table-striped table-hover table-sm table-condensed">
+                <table className="table table-hover table-sm table-condensed">
                     <thead className="thead-dark">
                         <tbody>
-                        <tr>
-                            <th>Student Name</th>
+                        {/* <tr> */}
+                            {/* <th>Student Name</th> */}
                             {/* <th>Parent Name</th>
                             <th>Parent Phone</th>
                             <th>Parent Email</th>
-                            <th>Comments</th> */}
-                        </tr>
+                        <th>Comments</th> */}
+                        {/* </tr> */}
                         {
                             // map through students
                             // for each student, create a row
                             this.state.students.map(student => {
                                 return (
-                                // <div>
-
-                                <tr className="student-row">
+                                    <tr className="student-row">
                                     <td>{student.name || 'N/A'}</td>
                                     {/* <td>{student.parentName || 'no parent name'}</td>
                                     <td>{student.phone || 'no phone number'}</td>
                                 <td>{student.email || 'no email'}</td> */}
                                     {/* <button name={student.id} onClick={this.addComment}>Student Comments</button> */}
                                     {/* onClick={this.addComment} */}
-                                    {/* <button name={student.id} onClick={this.showCommentHistory}>Show Comment History</button> */}
                                     <Modal  currentStudent={student} name={student.name}/>
-                                {/* </div> */}
+                                    {/* <button name={student.id} onClick={this.showCommentHistory}>Show Comment History</button> */}
                                 </tr>
                                 )
                             })
@@ -155,6 +161,14 @@ class Students extends React.Component {
                 {this.state.renderCommentHistory ? <CommentHistory student={this.state.currentStudent} /> : null}
             </div>
         );
+        } else {
+            return (
+                <div>
+                <Button padding="3px" className="btn btn-sm btn-dark" onClick={this.toggleStudents}>View Students</Button>
+                <StudentModal />
+                </div>
+            )
+        }
     }
 }
 

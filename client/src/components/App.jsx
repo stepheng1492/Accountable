@@ -54,7 +54,7 @@ class App extends Component {
     render() {
         let authButton = this.state.user ?
             <TeacherHome user={this.state.user} logout={this.logout}/> :
-            <Button className="loginButt" onClick={this.login} block>Log In</Button>
+            <Button className="btn btn-dark btn-sm" onClick={this.login} block>Log In</Button>
 
         return (
             <div className="container">

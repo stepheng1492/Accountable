@@ -31,7 +31,8 @@ class ClassListItem extends React.Component {
                     {this.props.eachClass.name}
                 </li>
                 {this.state.studentRender ? <Students className={this.props.eachClass.name} classID={this.props.eachClass.id}/> : null}
-                </ul>                    
+                </ul>
+                    
             </div>
         )
     }
