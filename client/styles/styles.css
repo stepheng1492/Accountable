@@ -5,15 +5,40 @@
     text-align: center;
 }
 
-.loginButton {
+/* .loginButton {
     text-align: center;
     padding-top: 250px;
-}
+} */
 
 .addStudentContainer {
-    display: flex
+    /* display: flex */
 }
 
 .addStudentContainer input {
-    flex: 2
+    /* flex: 2 */
 }
+
+.container {
+    background-color: linen;
+    display: flex;
+}
+
+.loginButt {
+    align-items: center;
+    border-radius: 23%;
+    background-color: cornflowerblue;
+    color: blanchedalmond;
+
+}
+
+.student-row {
+    height: 5px;
+}
+
+/* .modal {
+    width: 30rem;
+    background: lightgray;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    position: fixed;
+    top: 20vh;
+} */

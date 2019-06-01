@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import ClassListItem from './ClassListItem.jsx';
 
 // classes is list of classes by teacher
@@ -9,7 +8,7 @@ const Classes = (props) => {
         <div>
             <h3>{props.teacherName}'s Classes</h3>
             <div>
-                <h3>{props.classList.map((eachClass) => <ClassListItem eachClass={eachClass} />)}</h3>
+                <h4>{props.classList.map((eachClass) => <ClassListItem eachClass={eachClass} />)}</h4>
             </div>
         </div>
     );

@@ -54,7 +54,6 @@ app.post('/comments', (req, res) => {
     db.models.Comments.create({
         studentID: req.body.studentID,
         comment: req.body.comment,
-        date: new Date(),
     })
     .then(() => {
         console.log('comment data successfully saved in database');
@@ -124,12 +123,39 @@ app.get('/comments', (req, res) => {
 
 app.get('/teachers', (req, res) => {
     // right now, query database and send back the test teacher
-    db.models.Teachers.findAll()
+    db.models.Teachers.findAll({
+        where: {
+            email: req.query.email,
+        }
+    })
     .then((data) => {
         res.send(data);
     })
     .catch((err) => {
         console.log('error getting from /teachers', err);
+    })
+})
+
+// post handler for login -- adding teacher email and name for each teacher to db
+
+app.post('/login', (req, res) => {
+    console.log(req.body);
+    db.models.Teachers.destroy({
+        where: {
+            email: req.body.email,
+        }
+    })
+    db.models.Teachers.create({
+        name: req.body.name,
+        email: req.body.email,
+    })
+    .then(() => {
+        console.log('Teacher information successfully saved in the database')
+        res.sendStatus(201);
+    })
+    .catch((err) => {
+        console.log('error saving teacher info to database', err);
+        res.sendStatus(500);
     })
 })
 
