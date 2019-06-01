@@ -6,8 +6,8 @@ import 'firebase/auth';
 import { auth, provider } from '../firebaseConfig.js';
 import TeacherHome from './TeacherHome.jsx';
 import axios from 'axios';
-// import '../../styles/styles.css'
-
+import '../../styles/styles.css'
+import Button from 'react-bootstrap/Button';
 // const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 class App extends Component {
@@ -53,12 +53,17 @@ class App extends Component {
 
     render() {
         let authButton = this.state.user ?
-            <TeacherHome logout={this.logout}/> :
-            <button onClick={this.login}>Log In</button>
+            <TeacherHome user={this.state.user} logout={this.logout}/> :
+            // <Button className="btn btn-dark btn-sm" onClick={this.login} block>Log In</Button>
+            <input onClick={this.login} className="loginButton" type="image" src="https://www.c-learning.net/storage/app/media/img/buttons/google-login-button.png"></input>
+
 
         return (
-            <div>
+            <div className="container">
+                <div>
                 { authButton }
+                {/* <input className="loginButton" type="image" src="https://www.c-learning.net/storage/app/media/img/buttons/google-login-button.png"></input> */}
+                </div>
             </div>
         )
     }
