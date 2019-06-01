@@ -119,10 +119,11 @@ class Students extends React.Component {
                 <table className="table table-hover table-sm table-condensed">
                     <thead className="thead-dark">
                             <tr>
-                                <th>Name</th>
-                                <th>Guardian</th>
-                                <th>Phone</th>
-                                <th>Email</th>
+                                <th className="tableName">Name</th>
+                                <th className="tableGuardian">Guardian</th>
+                                <th className="tablePhone">Phone</th>
+                                <th className="tableEmail">Email</th>
+                                <th className="tableComments">Comments</th>
                             </tr>
                             </thead>
                         <tbody>

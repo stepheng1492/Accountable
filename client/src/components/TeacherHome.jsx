@@ -97,7 +97,7 @@ class TeacherHome extends React.Component {
                 </article>
                 {/* <h1 className='title'>Accountable</h1> */}
                 <div className="greeting">
-                    <h4>Welcome back, {this.state.currentTeacherName}</h4>
+                    <h4>Welcome Back, {this.state.currentTeacherName}</h4>
                 </div>
                 {/* <h5>Teacher ID: {this.state.currentTeacherId}</h5> */}
                 <br />
