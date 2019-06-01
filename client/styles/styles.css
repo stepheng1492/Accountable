@@ -139,3 +139,11 @@ blockquote {
         background-color: #78bfe0;
         border-radius: 5%;
     }
+
+    /* .studentList {
+        display: flex;
+    } */
+
+    .studentListDiv {
+        display: flex;
+    }
