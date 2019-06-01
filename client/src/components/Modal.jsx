@@ -103,7 +103,7 @@ class CommentModal extends React.Component {
                     <tbody>
                     <tr>
                         <td className="tableRows">{comment.comment}</td>
-                      <td className="tableRows">{moment().format('ddd, MMM, Do')}</td>
+                        <td className="tableRows">{moment().format('ddd, MMM, Do')}</td>
                     </tr>
                     </tbody>
                   );
