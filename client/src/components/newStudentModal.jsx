@@ -15,6 +15,10 @@ class StudentModal extends React.Component {
             show: false,
             history: false,
             newComment: false,
+            Name: '',
+            Guardian: '',
+            Email: '',
+            Phone: '',
         };
 
         this.handleShow = () => {
@@ -31,19 +35,17 @@ class StudentModal extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         const { Name, Guardian, Email, Phone } = this.state;
-        console.log(Name, Guardian, Email);
 
-        // axios.post('/students', {
-        //     Name,
-        //     Guardian,
-        //     email: Email,
-        //     phone: Phone,
-        //     classID: this.props.classID,
-        // })
+        axios.post('/students', {
+            name: Name,
+            parentName: Guardian,
+            email: Email,
+            phone: Phone,
+            classID: this.props.classID,
+        })
     }
 
     infoSet(event) {
-        console.log(event.target.placeholder)
         this.setState({
             [event.target.placeholder]: event.target.value
         })
