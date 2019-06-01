@@ -19,7 +19,8 @@
 }
 
 .container {
-    background-color: linen;
+    /* background-color: linen; */
+    background-image: "https://designshack.net/wp-content/uploads/best-subtle-black-white-background-textures.jpg";
     display: flex;
 }
 
