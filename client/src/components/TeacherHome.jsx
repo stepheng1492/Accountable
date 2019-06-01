@@ -90,7 +90,7 @@ class TeacherHome extends React.Component {
             <div>
                 <h1 className='title'>Accountable</h1>
                 <h4>Welcome back, {this.state.currentTeacherName}</h4>
-                    <button className="btn btn-danger btn-sm" onClick={this.props.logout}>Log Out</button>
+                    <button className="btn btn-dark btn-sm" onClick={this.props.logout}>Log Out</button>
                 {/* <h5>Teacher ID: {this.state.currentTeacherId}</h5> */}
                 <br />
                 <div>

@@ -6,9 +6,9 @@ import ClassListItem from './ClassListItem.jsx';
 const Classes = (props) => {
     return (
         <div>
-            <h3>{props.teacherName}'s Classes</h3>
+            <h4>{props.teacherName}'s Classes</h4>
             <div>
-                <h4>{props.classList.map((eachClass) => <ClassListItem eachClass={eachClass} />)}</h4>
+                <h5>{props.classList.map((eachClass) => <ClassListItem eachClass={eachClass} />)}</h5>
             </div>
         </div>
     );

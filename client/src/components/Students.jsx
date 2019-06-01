@@ -104,15 +104,16 @@ class Students extends React.Component {
 
 
     render() {
+        const { currentStudent, name } = this.state;
         return (
             <div>
-                <h4>Add a new student to your {this.props.className} class</h4>
+                {/* <h4>Add a new student to your {this.props.className} class</h4> */}
                 <div className="addStudentContainer">
                     {/* <input placeholder="student name" name="name" onChange={this.changeStudentData}></input>
                     <input placeholder="parent name" onChange={this.changeStudentData} name="parentName"></input>
                     <input placeholder="parent phone" onChange={this.changeStudentData} name="parentPhone"></input>
                     <input placeholder="parent email" onChange={this.changeStudentData} name="parentEmail"></input> */}
-                    <Button className="btn btn-sm" onClick={this.addStudents}>Add Student</Button>
+                    <Button className="btn btn-sm btn-dark" onClick={this.addStudents}>Add Student</Button>
                     <br />
                 </div>
                 <br />
@@ -121,26 +122,30 @@ class Students extends React.Component {
                         <tbody>
                         <tr>
                             <th>Student Name</th>
-                            <th>Parent Name</th>
+                            {/* <th>Parent Name</th>
                             <th>Parent Phone</th>
                             <th>Parent Email</th>
-                            <th>Comments</th>
+                            <th>Comments</th> */}
                         </tr>
                         {
                             // map through students
                             // for each student, create a row
                             this.state.students.map(student => {
-                                return (<tr className="student-row">
-                                    <td>{student.name || 'no name given'}</td>
-                                    <td>{student.parentName || 'no parent name'}</td>
+                                return (
+                                // <div>
+
+                                <tr className="student-row">
+                                    <td>{student.name || 'N/A'}</td>
+                                    {/* <td>{student.parentName || 'no parent name'}</td>
                                     <td>{student.phone || 'no phone number'}</td>
-                                    <td>{student.email || 'no email'}</td>
-                                    {/* <Modal /> */}
-                                    <button name={student.id} onClick={this.addComment}>Student Comments</button>
-                                    <Modal />
+                                <td>{student.email || 'no email'}</td> */}
+                                    {/* <button name={student.id} onClick={this.addComment}>Student Comments</button> */}
                                     {/* onClick={this.addComment} */}
                                     {/* <button name={student.id} onClick={this.showCommentHistory}>Show Comment History</button> */}
-                                </tr>)
+                                    <Modal  currentStudent={student} name={student.name}/>
+                                {/* </div> */}
+                                </tr>
+                                )
                             })
                         }
                         </tbody>

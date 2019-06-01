@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import ModalHeader from 'react-bootstrap/ModalHeader';
 import ModalTitle from 'react-bootstrap/ModalTitle';
 import ModalBody from 'react-bootstrap/ModalBody';
+import ModalFooter from 'react-bootstrap/ModalFooter';
+import CommentHistory from './CommentHistory.jsx';
 
 // import '../../styles/styles.css'
 class TestModal extends React.Component {
@@ -12,6 +14,8 @@ class TestModal extends React.Component {
   
       this.state = {
         show: false,
+        history: false,
+        newComment: false,
       };
   
       this.handleShow = () => {
@@ -21,12 +25,41 @@ class TestModal extends React.Component {
       this.handleHide = () => {
         this.setState({ show: false });
       };
+
+      this.showHistory = this.showHistory.bind(this);
+      this.newComment = this.newComment.bind(this);
+    }
+
+    showHistory() {
+        console.log(this.props)
+        this.setState({
+            history: true,
+            newComment: false
+        })
+    }
+
+    newComment() {
+        this.setState({
+            newComment: true,
+            history: false,
+        })
     }
   
     render() {
+        let whichRendered;
+        if (this.state.history) {
+            whichRendered = <div>
+                <p>History Test</p>
+            </div>
+            
+        } else if (this.state.newComment) {
+            whichRendered = <div>
+                <p>New Comment Test</p>
+                </div>
+        }
       return (
         <>
-          <Button variant="primary" onClick={this.handleShow}>
+          <Button variant="dark" onClick={this.handleShow} className="btn btn-sm">
             Student Comments
           </Button>
   
@@ -37,21 +70,20 @@ class TestModal extends React.Component {
             aria-labelledby="example-custom-modal-styling-title"
           >
             <ModalHeader closeButton>
-              <ModalTitle id="example-custom-modal-styling-title">
-                Custom Modal Styling
+              <ModalTitle id="title">
               </ModalTitle>
+              <Button className="btn btn-sm btn-dark" onClick={this.showHistory} id="history">View Comment History</Button>
+              or
+              <Button className="btn btn-sm btn-dark" onClick={this.newComment} id="newComment">Leave a Comment</Button>
             </ModalHeader>
             <ModalBody>
-              <p>
-                Ipsum molestiae natus adipisci modi eligendi? Debitis amet quae
-                unde commodi aspernatur enim, consectetur. Cumque deleniti
-                temporibus ipsam atque a dolores quisquam quisquam adipisci
-                possimus laboriosam. Quibusdam facilis doloribus debitis! Sit
-                quasi quod accusamus eos quod. Ab quos consequuntur eaque quo rem!
-                Mollitia reiciendis porro quo magni incidunt dolore amet atque
-                facilis ipsum deleniti rem!
-              </p>
+                <p>TEST</p>
+                {whichRendered}
+                
             </ModalBody>
+            <ModalFooter>
+                <Button onClick={this.handleHide} className="btn btn-sm btn-dark">Close</Button>
+            </ModalFooter>
           </Modal>
         </>
       );

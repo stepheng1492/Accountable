@@ -26,10 +26,12 @@ class ClassListItem extends React.Component {
     render() {
         return (
             <div>
+                <ul>
                 <li onClick={this.handleClassItemClick}>
                     {this.props.eachClass.name}
                 </li>
                 {this.state.studentRender ? <Students className={this.props.eachClass.name} classID={this.props.eachClass.id}/> : null}
+                </ul>                    
             </div>
         )
     }
