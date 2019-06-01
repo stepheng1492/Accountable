@@ -5,6 +5,16 @@
     text-align: center;
 }
 
+.something-else:hover {
+    text-decoration: underline;
+    color: rgb(105, 105, 218);
+    cursor: pointer;
+    list-style-type: none;
+}
+
+.something-else {
+    list-style-type: none;
+}
 /* .loginButton {
     text-align: center;
     padding-top: 250px;
