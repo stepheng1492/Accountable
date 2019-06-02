@@ -96,16 +96,9 @@ class TeacherHome extends React.Component {
                 <button text-align="right" className="btn btn-sm" id="logoutButt" onClick={this.props.logout}>Log Out</button>
                     </div>
                 </div>
-                {/* <article className="quotecontainer">
-                    <blockquote>
-                        <strong>Accountability</strong> is <em>the measure</em> of a <strong>leaders height</strong>
-                    </blockquote>
-                    <b>Jeffrey Benjamin</b>
-                </article> */}
                 <div className="greeting">
                     <h4>Welcome Back, {this.state.currentTeacherName}</h4>
                 </div>
-                {/* <h5>Teacher ID: {this.state.currentTeacherId}</h5> */}
                 <br />
                 <div className="classes">
                     <button className="btn btn-dark btn-sm" onClick={this.submitClassHandler}>Add Class</button>
