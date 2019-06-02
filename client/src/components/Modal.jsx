@@ -151,3 +151,7 @@ class CommentModal extends React.Component {
 }
 
 export default CommentModal;
+<<<<<<< HEAD
+=======
+
+>>>>>>> d833aa6ad73425474d78ad41ce13a53879366197
