@@ -205,7 +205,6 @@
 
     #logoutButt {
         height: 30px;
-        /* margin-left: 400px; */
         margin-top: 140px;
         margin-left: 50px;
     }
@@ -213,21 +212,27 @@
     .jumbotron {
         margin-left: 50px;
         height: 200px;
+        box-shadow: 2px 3px 2px 3px darkgrey;
+        border-radius: 2px;
     }
 
     .table {
-        /* margin-top: 400px;
-        margin-left: 75px; */
-        position: absolute;
+        margin-right: -110px;
+        margin-top: 160px;
     }
 
-    #backButt {
-        /* margin-top: 180px;
-        margin-left: -50px; */
+    .backButt {
+        height: 40px;
+
     }
 
     .addStudentContainer {
         height: 60px;
-        /* margin-top: 165px; */
-        /* margin-right: -180px; */
+        width: 200px;
+    }
+
+    #addButt {
+    }
+
+    .classes button {
     }
