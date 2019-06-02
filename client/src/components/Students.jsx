@@ -1,7 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import CommentForm from './CommentForm.jsx';
-import CommentHistory from './CommentHistory.jsx';
 import Button from 'react-bootstrap/Button';
 // import Modal from 'react-bootstrap/Modal';
 import Modal from './Modal.jsx';
@@ -16,9 +14,6 @@ class Students extends React.Component {
       parentName: '',
       parentPhone: '',
       parentEmail: '',
-      renderCommentForm: false,
-      currentStudent: {},
-      renderCommentHistory: false,
     };
     this.addStudents = this.addStudents.bind(this);
     this.changeStudentData = this.changeStudentData.bind(this);
@@ -118,58 +113,38 @@ class Students extends React.Component {
 
   render() {
     return (
-                <div className="studentListDiv">
-                    <div className="addStudentContainer">
-                        <StudentModal studentChange={this.changeStudentState} classID={this.props.classID}/>
+      <div className="studentListDiv">
+                  <div className="addStudentContainer">
+                      <StudentModal studentChange={this.changeStudentState} classID={this.props.classID}/>
                     </div>
-                <table className="table table-hover table-sm table-condensed">
-                    <thead className="thead-dark">
-                            <tr>
-                                <th className="tableName">Name</th>
-                                <th className="tableGuardian">Guardian</th>
-                                <th className="tablePhone">Phone</th>
-                                <th className="tableEmail">Email</th>
-                                <th className="tableComments">Comments</th>
+                  <table className="table table-hover table-sm table-condensed">
+                  <thead className="thead-dark">
+                      <tr>
+                              <th className="tableName">Name</th>
+                              <th className="tableGuardian">Guardian</th>
+                              <th className="tablePhone">Phone</th>
+                              <th className="tableEmail">Email</th>
+                              <th className="tableComments">Comments</th>
                             </tr>
-                            </thead>
-                        <tbody>
-                        {/* <tr> */}
-                            {/* <th>Student Name</th> */}
-                            {/* <th>Parent Name</th>
-                            <th>Parent Phone</th>
-                            <th>Parent Email</th>
-                        <th>Comments</th> */}
-                        {/* </tr> */}
-                        {
+                    </thead>
+                  <tbody>
+                          {
                             this.state.students.map(student => {
                               return (
-                                    <tr className="student-row">
-                                    <td>{student.name || 'N/A'}</td>
-                                    <td>{student.parentName || 'no parent name'}</td>
-                                    <td>{student.phone || 'no phone number'}</td>
-                                <td>{student.email || 'no email'}</td>
-                                    {/* <button name={student.id} onClick={this.addComment}>Student Comments</button> */}
-                                    {/* onClick={this.addComment} */}
-                                    <Modal  currentStudent={student} name={student.name}/>
-                                    {/* <button name={student.id} onClick={this.showCommentHistory}>Show Comment History</button> */}
-                                </tr>
+                                <tr className="student-row">
+                                      <td>{student.name || 'N/A'}</td>
+                                      <td>{student.parentName || 'no parent name'}</td>
+                                      <td>{student.phone || 'no phone number'}</td>
+                                      <td>{student.email || 'no email'}</td>
+                                      <Modal  currentStudent={student} name={student.name}/>
+                                    </tr>
                               );
                             })
                         }
                         </tbody>
                 </table>
-                {this.state.renderCommentForm ? <CommentForm student={this.state.currentStudent} /> : null}
-                {this.state.renderCommentHistory ? <CommentHistory student={this.state.currentStudent} /> : null}
-            </div>
+                </div>
     ); 
-    // else {
-    //     return (
-    //         <div>
-    //         <Button padding="3px" className="btn btn-sm btn-dark" onClick={this.toggleStudents}>View Students</Button>
-    //         <StudentModal classID={this.props.classID}/>
-    //         </div>
-    //     )
-    // }
   }
 }
 

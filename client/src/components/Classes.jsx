@@ -8,7 +8,6 @@ import Button from 'react-bootstrap/Button';
 const Classes = (props) => {
     return (
         <div>
-            {/* <Button className="btn btn-sm btn-dark outline-danger">Add A Class</Button> */}
             <h4 display="inline-block">Your Current Classes</h4>
             <div>
                 <h5>{props.classList.map((eachClass) => <ClassListItem eachClass={eachClass} />)}</h5>
