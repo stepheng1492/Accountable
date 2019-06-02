@@ -88,10 +88,14 @@ class TeacherHome extends React.Component {
     render() {
         return (
             <div>
+                <div className="jumbotron jumbotron-fluid">
                 <div className="header">
                     <h1 className='title'>Accountable</h1>
-                <button text-align="right" className="btn btn-sm" onClick={this.props.logout}>Log Out</button>
+                    <p id="quote">"Experience teaches only the teachable." </p>
+                    <p id="quoteauthor">-Aldous Huxley</p>
+                <button text-align="right" className="btn btn-sm" id="logoutButt" onClick={this.props.logout}>Log Out</button>
                     </div>
+                </div>
                 {/* <article className="quotecontainer">
                     <blockquote>
                         <strong>Accountability</strong> is <em>the measure</em> of a <strong>leaders height</strong>
