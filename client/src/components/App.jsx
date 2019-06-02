@@ -55,7 +55,13 @@ class App extends Component {
         let authButton = this.state.user ?
             <TeacherHome user={this.state.user} logout={this.logout}/> :
             // <Button className="btn btn-dark btn-sm" onClick={this.login} block>Log In</Button>
-            <input onClick={this.login} className="loginButton" type="image" src="https://www.c-learning.net/storage/app/media/img/buttons/google-login-button.png"></input>
+            <div className="logincontainer">
+                <h3 className="introtitle">Accountable</h3>
+                <p>The app that lets teachers do more</p>
+                <input onClick={this.login} className="loginButton" type="image" src="https://www.c-learning.net/storage/app/media/img/buttons/google-login-button.png"></input>
+            </div>
+
+            
 
 
         return (
