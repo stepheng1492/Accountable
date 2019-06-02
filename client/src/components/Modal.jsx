@@ -64,6 +64,10 @@ class CommentModal extends React.Component {
             });
           });
       });
+    
+    this.setState({
+      commentText: '',
+    });
   }
 
   changeComment(e) {
@@ -86,6 +90,10 @@ class CommentModal extends React.Component {
     axios.post('/texts', {
       phone,
       message: this.state.textMessageText,
+    });
+
+    this.setState({
+      textMessageText: '',
     });
   }
 
@@ -139,11 +147,11 @@ class CommentModal extends React.Component {
       whichRendered = (<div>
         <h5>Add Comment for {this.props.name}</h5>
         <div>
-          <input onChange={this.changeComment} />
+          <input value={this.state.commentText} onChange={this.changeComment} />
           <button onClick={this.submitComment}>Submit Comment</button>        
         </div>
         <div>
-        <input onChange={this.changeText}/>
+        <input value={this.state.textMessageText} onChange={this.changeText}/>
         <button onClick={this.sendText}>Send Text</button>
           </div>     
       </div>);
