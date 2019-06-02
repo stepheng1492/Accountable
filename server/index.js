@@ -4,6 +4,7 @@ const port = 3000;
 const path = require('path');
 const bodyParser = require('body-parser');
 const db = require('../database/index');
+const sms = require('../send-sms')
 
 const app = express();
 app.use(bodyParser.json());
@@ -153,6 +154,15 @@ app.post('/login', (req, res) => {
       console.log('error saving teacher info to database', err);
       res.sendStatus(500);
     });
+});
+
+
+app.post('/texts', (req, res) => {
+  sms.client.messages.create({
+    to: req.body.phone,
+    from: "+15045968529",
+    body: req.body.message,
+  });
 });
 
 app.listen(port, () => console.log(`Our app listening on port ${port}!`));

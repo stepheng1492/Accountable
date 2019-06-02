@@ -19,6 +19,7 @@ class CommentModal extends React.Component {
       newComment: false,
       commentText: '',
       comments: [],
+      textMessageText: '',
     };
     this.handleShow = () => {
       this.setState({ show: true });
@@ -32,6 +33,8 @@ class CommentModal extends React.Component {
     this.getComments = this.getComments.bind(this);
     this.submitComment = this.submitComment.bind(this);
     this.changeComment = this.changeComment.bind(this);
+    this.changeText = this.changeText.bind(this);
+    this.sendText = this.sendText.bind(this);
   }
 
   showHistory() {
@@ -68,6 +71,24 @@ class CommentModal extends React.Component {
       commentText: e.target.value,
     });
   }
+
+  changeText(e) {
+    this.setState({
+      textMessageText: e.target.value,
+    });
+  }
+
+  sendText() {
+    // make post request to server
+    let phone = this.props.currentStudent.phone.replace(/-/g, "");
+    phone = "+1" + phone
+    
+    axios.post('/texts', {
+      phone,
+      message: this.state.textMessageText,
+    });
+  }
+
 
   getComments() {
     return axios.get('/comments', {
@@ -117,8 +138,14 @@ class CommentModal extends React.Component {
     } else if (this.state.newComment) {
       whichRendered = (<div>
         <h5>Add Comment for {this.props.name}</h5>
-        <input onChange={this.changeComment}></input>  
-        <button onClick={this.submitComment}>Submit Comment</button>              
+        <div>
+          <input onChange={this.changeComment} />
+          <button onClick={this.submitComment}>Submit Comment</button>        
+        </div>
+        <div>
+        <input onChange={this.changeText}/>
+        <button onClick={this.sendText}>Send Text</button>
+          </div>     
       </div>);
     }
     return (
