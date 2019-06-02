@@ -1,6 +1,6 @@
 import React from 'react';
-import ClassListItem from './ClassListItem.jsx';
 import Button from 'react-bootstrap/Button';
+import ClassListItem from './ClassListItem.jsx';
 
 
 // classes is list of classes by teacher
