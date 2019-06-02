@@ -25,7 +25,7 @@ class CommentHistory extends React.Component {
     componentDidMount() {
         this.getComments()
         .then((data) => {
-            console.log(data);
+            // console.log(data);
             this.setState({
                 comments: data.data,
             })
@@ -46,7 +46,7 @@ class CommentHistory extends React.Component {
                             <tr>
                                 <td>{comment.createdAt}</td>
                                 {/* <td>{moment.format(comment.createdAt)}</td> */}
-                                {console.log(moment())}
+                                {}
                                 <td>{comment.comment}</td>
                             </tr>
                         );
