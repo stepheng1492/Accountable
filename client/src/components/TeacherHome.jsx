@@ -26,6 +26,7 @@ class TeacherHome extends React.Component {
 
   submitClassHandler() {
     this.submitClass(this.state.inputState);
+    this.renderClassInput();
   }
 
   submitClass(className) {
