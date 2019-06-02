@@ -144,7 +144,7 @@ class Students extends React.Component {
           </tbody>
         </table>
         <div>
-          <button onClick={(event) => {this.props.changeState(); this.props.showList();}} className="btn btn-sm">Back</button>
+          <button id="backButt" onClick={(event) => {this.props.changeState(); this.props.showList();}} className="btn btn-sm">Back</button>
         </div>
       </div>
     ); 

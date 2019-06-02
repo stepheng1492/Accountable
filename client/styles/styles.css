@@ -212,4 +212,21 @@
 
     .jumbotron {
         margin-left: 50px;
+        height: 200px;
+    }
+
+    .table {
+        margin-top: 220px;
+        margin-left: 75px;
+    }
+
+    #backButt {
+        margin-top: 180px;
+        margin-left: -50px;
+    }
+
+    .addStudentContainer {
+        height: 60px;
+        margin-top: 165px;
+        margin-right: -180px;
     }
