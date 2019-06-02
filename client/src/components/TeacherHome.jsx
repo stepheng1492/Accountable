@@ -22,52 +22,6 @@ class TeacherHome extends React.Component {
     this.renderClassInput = this.renderClassInput.bind(this);
   }
 
- 
-
-  submitClassHandler() {
-    this.submitClass(this.state.inputState);
-    this.renderClassInput();
-  }
-
-  submitClass(className) {
-    // axios post to classes
-    // need to send the teacherID and className
-    axios.post('/classes', {
-      className,
-      id: this.state.currentTeacherId,
-    })
-      .then(() => {
-        this.getClassData()
-          .then(data => {
-            this.setState({
-              currentTeacherClasses: data.data,
-            });
-          });
-      });
-  }
-
-  getTeacherData() {
-    // axios get to teachers -- right now just get the one teacher in the database
-    return axios.get('/teachers', {
-      params: {
-        email: this.props.user.email,
-      }
-    });
-  }
-
-  getClassData() {
-    return axios.get('/classes', {
-      params: {
-        teacherID: this.state.currentTeacherId,
-      }
-    });
-  }
-
-  changeInputState(e) {
-    this.setState({
-      inputState: e.target.value,
-    });
-  }
 
   componentDidMount() {
     // show current teacher name and ID -- set the state
@@ -88,6 +42,52 @@ class TeacherHome extends React.Component {
             });
           });
       });
+  }
+
+  getTeacherData() {
+    // axios get to teachers -- right now just get the one teacher in the database
+    return axios.get('/teachers', {
+      params: {
+        email: this.props.user.email,
+      },
+    });
+  }
+
+  getClassData() {
+    return axios.get('/classes', {
+      params: {
+        teacherID: this.state.currentTeacherId,
+      },
+    });
+  }
+
+  submitClass(className) {
+    // axios post to classes
+    // need to send the teacherID and className
+    axios.post('/classes', {
+      className,
+      id: this.state.currentTeacherId,
+    })
+      .then(() => {
+        this.getClassData()
+          .then((data) => {
+            this.setState({
+              currentTeacherClasses: data.data,
+            });
+          });
+      });
+  }
+
+  submitClassHandler() {
+    this.submitClass(this.state.inputState);
+    this.renderClassInput();
+  }
+
+
+  changeInputState(e) {
+    this.setState({
+      inputState: e.target.value,
+    });
   }
 
   renderClassInput() {
