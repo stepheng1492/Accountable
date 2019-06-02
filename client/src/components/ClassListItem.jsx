@@ -3,38 +3,36 @@ import axios from 'axios';
 import Students from './Students.jsx'
 
 class ClassListItem extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-         studentRender: false, 
-        }
-        this.handleClassItemClick = this.handleClassItemClick.bind(this);
-        this.changeStudentState = this.changeStudentState.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      studentRender: false, 
+    };
+    this.handleClassItemClick = this.handleClassItemClick.bind(this);
+    this.changeStudentState = this.changeStudentState.bind(this);
+  }
 
-    changeStudentState() {
-        this.setState({
-            studentRender: !this.state.studentRender,
-        })        
-    }
+  changeStudentState() {
+    this.setState({
+      studentRender: !this.state.studentRender,
+    });
+  }
 
-    handleClassItemClick() {
-        // call function that renders class's students
-        this.changeStudentState()
-    }
+  handleClassItemClick() {
+    // call function that renders class's students
+    this.changeStudentState();
+  }
 
-    render() {
-        return (
-            <div>
+  render() {
+    return (
+        <div onClick={this.handleClassItemClick}>
                 <ul className="studentList">
-                    <li className="something-else" onClick={this.handleClassItemClick}>
-                        {this.props.eachClass.name}
-                    </li>
+                    <li className="something-else"> {this.props.eachClass.name}</li>
                     {this.state.studentRender ? <Students className={this.props.eachClass.name} classID={this.props.eachClass.id} /> : null}
                 </ul>
             </div>
-        );
-    }
+    );
+  }
 
 }
 
