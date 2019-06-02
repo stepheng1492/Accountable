@@ -138,7 +138,7 @@ app.get('/teachers', (req, res) => {
 // post handler for login -- adding teacher email and name for each teacher to db
 
 app.post('/login', (req, res) => {
-  
+
   db.models.Teachers.findOrCreate({
     where : {
       name: req.body.name,
