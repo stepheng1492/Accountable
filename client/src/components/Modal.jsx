@@ -39,16 +39,16 @@ class CommentModal extends React.Component {
 
   showHistory() {
     this.setState({
+      newComment: false,
       history: true,
-      newComment: false
-    })
+    });
   }
 
   newComment() {
     this.setState({
       newComment: true,
       history: false,
-    })
+    });
   }
 
   submitComment() {
@@ -79,13 +79,15 @@ class CommentModal extends React.Component {
   }
 
   sendText() {
+    const { textMessageText } = this.state;
+    const { currentStudent } = this.props;
     // make post request to server
-    let phone = this.props.currentStudent.phone.replace(/-/g, "");
-    phone = "+1" + phone
-    
+    let phone = currentStudent.phone.replace(/-/g, '');
+    phone = `+1${phone}`;
+
     axios.post('/texts', {
       phone,
-      message: this.state.textMessageText,
+      message: textMessageText,
     });
   }
 
@@ -134,35 +136,33 @@ class CommentModal extends React.Component {
           </table>
         </div>
       );
-            
     } else if (this.state.newComment) {
       whichRendered = (<div>
         <h5>Add Comment for {this.props.name}</h5>
         <div>
           <input onChange={this.changeComment} />
-          <button onClick={this.submitComment}>Submit Comment</button>        
+          <button type="submit" onClick={this.submitComment}>Submit Comment</button>
         </div>
         <div>
-        <input onChange={this.changeText}/>
-        <button onClick={this.sendText}>Send Text</button>
-          </div>     
+          <input onChange={this.changeText} />
+          <button type="submit" onClick={this.sendText}>Send Text</button>
+        </div>
       </div>);
     }
     return (
       <>
         <Button variant="dark" onClick={this.handleShow} className="btn btn-sm">
           {this.props.name}'s Comments
-        </Button>  
+        </Button>
         <Modal
-            show={this.state.show}
-            onHide={this.handleHide}
-            dialogClassName="modal-90w"
-          >
-          <ModalHeader >
-            <ModalTitle id="title">
-            </ModalTitle>
+          show={this.state.show}
+          onHide={this.handleHide}
+          dialogClassName="modal-90w"
+        >
+          <ModalHeader>
+            <ModalTitle id="title" />
             <Button className="btn btn-sm btn-dark" onClick={this.showHistory} id="history">View Comment History</Button>
-              
+
             <Button className="btn btn-sm btn-dark" onClick={this.newComment} id="newComment">Leave a Comment</Button>
           </ModalHeader>
           <ModalBody>

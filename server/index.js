@@ -3,12 +3,10 @@ const express = require('express');
 const port = 3000;
 const path = require('path');
 const bodyParser = require('body-parser');
+const client = require('twilio')(process.env.accountSid, process.env.authToken);
 const db = require('../database/index');
 
 require('dotenv').config();
-
-const client = require('twilio')(process.env.accountSid, process.env.authToken);
-
 
 const app = express();
 app.use(bodyParser.json());
@@ -16,7 +14,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '../client/dist')));
-
 
 // post request handler for adding classes
 app.post('/classes', (req, res) => {
@@ -143,12 +140,11 @@ app.get('/teachers', (req, res) => {
 // post handler for login -- adding teacher email and name for each teacher to db
 
 app.post('/login', (req, res) => {
-
   db.models.Teachers.findOrCreate({
-    where : {
+    where: {
       name: req.body.name,
       email: req.body.email,
-    }
+    },
   })
     .then(() => {
       console.log('Teacher information successfully saved in the database');
@@ -161,10 +157,10 @@ app.post('/login', (req, res) => {
 });
 
 
-app.post('/texts', (req, res) => {
+app.post('/texts', (req) => {
   client.messages.create({
     to: req.body.phone,
-    from: "+15045968529",
+    from: '+15045968529',
     body: req.body.message,
   });
 });
