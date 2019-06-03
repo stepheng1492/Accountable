@@ -91,7 +91,7 @@ class StudentModal extends React.Component {
           </ModalHeader>
           <ModalBody>
             <form onSubmit={this.handleSubmit} className="newStudenForm">
-              <label>
+              <label htmlFor="newStudent">
                 <input value={Name} type="text" placeholder="Name" onChange={this.infoSet} />
                 <br />
                 <input value={Guardian} type="text" placeholder="Guardian" onChange={this.infoSet} />
