@@ -14,7 +14,6 @@ class CommentHistory extends React.Component {
   componentDidMount() {
     this.getComments()
       .then((data) => {
-        // console.log(data);
         this.setState({
           comments: data.data,
         });
@@ -22,7 +21,7 @@ class CommentHistory extends React.Component {
   }
 
   getComments() {
-      const { student } = this.props;
+    const { student } = this.props;
     return axios.get('/comments', {
       params: {
         studentID: student.id,
@@ -32,31 +31,29 @@ class CommentHistory extends React.Component {
 
 
   render() {
+    const { comments } = this.state;
+    const { student } = this.props;
     return (
-            <div>
-                <h3>Comment History for {this.props.student.name}</h3>
-                <table>
-                    <tr>
-                        <th>Date</th>
-                        <th>Text</th>
-                    </tr>
-                    {this.state.comments.map(comment => {
-                      return (
-                            <tr>
-                                <td>{comment.createdAt}</td>
-                                {/* <td>{moment.format(comment.createdAt)}</td> */}
-                                {}
-                                <td>{comment.comment}</td>
-                            </tr>
-                      );
-
-                    })}
-                </table>
-            </div>
+      <div>
+        <h3>
+          Comment History for
+          {student.name}
+        </h3>
+        <table>
+          <tr>
+            <th>Date</th>
+            <th>Text</th>
+          </tr>
+          {comments.map(comment => (
+            <tr>
+              <td>{comment.createdAt}</td>
+              <td>{comment.comment}</td>
+            </tr>
+          ))}
+        </table>
+      </div>
     );
   }
 }
-
-
 
 export default CommentHistory;

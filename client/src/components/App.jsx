@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import 'firebase/auth';
 import axios from 'axios';
-import { auth, provider } from '../firebaseConfig.js';
-import TeacherHome from './TeacherHome.jsx';
+import { auth, provider } from '../firebaseConfig';
+import TeacherHome from './TeacherHome';
 import '../../styles/styles.css';
 
 class App extends Component {

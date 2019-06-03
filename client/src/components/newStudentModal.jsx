@@ -44,11 +44,11 @@ class StudentModal extends React.Component {
       parentName: Guardian,
       email: Email,
       phone: Phone,
-      classID: classID,
+      classID,
     })
       .then(() => axios.get('/students', {
         params: {
-          classID: classID,
+          classID,
         },
       })
         .then((data) => {

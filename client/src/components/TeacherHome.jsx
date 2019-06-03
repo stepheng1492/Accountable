@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Classes from './Classes.jsx';
+import Classes from './Classes';
 
 class TeacherHome extends React.Component {
   constructor(props) {

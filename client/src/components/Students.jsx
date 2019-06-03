@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import Modal from './Modal.jsx';
-import StudentModal from './newStudentModal.jsx';
+import Modal from './Modal';
+import StudentModal from './newStudentModal';
 
 class Students extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class Students extends React.Component {
 
     return axios.get('/students', {
       params: {
-        classID: classID,
+        classID,
       },
     });
   }
@@ -61,7 +61,7 @@ class Students extends React.Component {
       parentName,
       email: parentEmail,
       phone: parentPhone,
-      classID: classID,
+      classID,
     });
   }
 

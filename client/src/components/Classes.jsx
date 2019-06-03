@@ -1,6 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line import/extensions
-import ClassListItem from './ClassListItem.jsx';
+import ClassListItem from './ClassListItem';
 
 const Classes = props => (
   <div>

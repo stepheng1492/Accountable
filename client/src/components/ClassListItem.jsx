@@ -1,5 +1,5 @@
 import React from 'react';
-import Students from './Students.jsx';
+import Students from './Students';
 
 class ClassListItem extends React.Component {
   constructor(props) {
@@ -28,17 +28,18 @@ class ClassListItem extends React.Component {
   }
 
   hideClassListItems() {
-    const htmlCollection = document.getElementsByClassName('something-else');
-    const arrayCollection = Array.from(htmlCollection);
-    arrayCollection.forEach((element) => {
+    this.htmlCollection = document.getElementsByClassName('something-else');
+    this.arrayCollection = Array.from(this.htmlCollection);
+
+    this.arrayCollection.forEach((element) => {
       element.style.display = 'none';
     });
   }
 
   showClassListItems() {
-    const htmlCollection = document.getElementsByClassName('something-else');
-    const arrayCollection = Array.from(htmlCollection);
-    arrayCollection.forEach(element => {
+    this.htmlCollection = document.getElementsByClassName('something-else');
+    this.arrayCollection = Array.from(this.htmlCollection);
+    this.arrayCollection.forEach((element) => {
       element.style.display = 'block';
     });
   }
