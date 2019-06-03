@@ -9,13 +9,16 @@ import '../../styles/styles.css';
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       user: null,
     };
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
   }
+
+  /**
+  * component did mount changes state of user form null to user from firebase login
+  */
 
   componentDidMount() {
     auth.onAuthStateChanged((user) => {
@@ -24,6 +27,24 @@ class App extends Component {
       }
     });
   }
+
+  /**
+   * logout changes state of user back to null
+   */
+
+  logout() {
+    auth.signOut()
+      .then(() => {
+        this.setState({
+          user: null,
+        });
+      });
+  }
+
+  /**
+   * login function makes a post request to '/login', sending email and name on request body
+   * updates the state of user to the user who has logged in 
+   */
 
   login() {
     auth.signInWithPopup(provider)
@@ -38,20 +59,15 @@ class App extends Component {
       });
   }
 
-  logout() {
-    auth.signOut()
-      .then(() => {
-        this.setState({
-          user: null,
-        });
-      });
-  }
-
+  /**
+   * render function conditionally renders different html based on state of user
+   * if user is not null, TeacherHome component is rendered
+   * else, login page is rendered
+   */
 
   render() {
-    const { user } = this.state;
-    const authButton = user
-      ? <TeacherHome user={user} logout={this.logout} />
+    const authButton = this.state.user
+      ? <TeacherHome user={this.state.user} logout={this.logout} />
       : (
         <div className="logincontainer">
           <h3 className="introtitle">Accountable</h3>
@@ -59,7 +75,6 @@ class App extends Component {
           <input onClick={this.login} alt="" className="loginButton" type="image" src="https://www.c-learning.net/storage/app/media/img/buttons/google-login-button.png" />
         </div>
       );
-
     return (
       <div className="container">
         <div>
