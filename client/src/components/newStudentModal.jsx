@@ -73,22 +73,21 @@ class StudentModal extends React.Component {
   render() {
     return (
       <div>
-        <Button variant="dark" onClick={this.handleShow} className="btn btn-sm">
-                    Add A Student
+          <Button id="addButt" variant="dark" onClick={this.handleShow} className="btn btn-sm">
+            Add A Student
           </Button>
-
         <Modal
-            show={this.state.show}
-            onHide={this.handleHide}
-            dialogClassName="modal-90w"
-            aria-labelledby="example-custom-modal-styling-title"
-                >
-            <ModalHeader closeButton>
+          show={this.state.show}
+          onHide={this.handleHide}
+          dialogClassName="modal-90w"
+          aria-labelledby="example-custom-modal-styling-title"
+        >
+          <ModalHeader closeButton>
             <ModalTitle id="title">
             </ModalTitle>
             <h5>Please enter the following student information: </h5>
           </ModalHeader>
-            <ModalBody>
+          <ModalBody>
             <form onSubmit={this.handleSubmit} className="newStudenForm">
               <label>
                 <input value={this.state.Name} type="text" placeholder="Name" onChange={this.infoSet} />
@@ -104,10 +103,10 @@ class StudentModal extends React.Component {
             </form>
 
           </ModalBody>
-            <ModalFooter>
+          <ModalFooter>
             <Button onClick={this.handleHide} className="btn btn-sm btn-dark">Close</Button>
           </ModalFooter>
-          </Modal>
+        </Modal>
       </div>
     );
   }

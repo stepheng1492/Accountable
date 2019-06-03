@@ -61,7 +61,7 @@ class Students extends React.Component {
     });
   }
 
-    
+
   // capture student data
   changeStudentData(e) {
     this.setState({
@@ -114,13 +114,16 @@ class Students extends React.Component {
   render() {
     return (
       <div>
-          <div className="studentListTitle">
-        <h4>Students in {this.props.className}</h4>
-          </div>
+        <div className="studentListTitle">
+          <h4>Students in {this.props.className}</h4>
+        </div>
+        <div className="addStudentContainer">
+          <StudentModal studentChange={this.changeStudentState} classID={this.props.classID} />
+        </div>
+        <div className="backButt">
+          <button onClick={(event) => { this.props.changeState(); this.props.showList(); }} className="btn btn-sm">Back</button>
+        </div>
         <div className="studentListDiv">
-          <div className="addStudentContainer">
-            <StudentModal studentChange={this.changeStudentState} classID={this.props.classID} />
-          </div>
           <table className="table table-hover table-sm table-condensed">
             <thead className="thead-dark">
               <tr>
@@ -133,26 +136,23 @@ class Students extends React.Component {
             </thead>
             <tbody>
               {
-                              this.state.students.map((student) => {
-                                return (
-                                  <tr className="student-row">
-                                    <td>{student.name || 'N/A'}</td>
-                                    <td>{student.parentName || 'no parent name'}</td>
-                                    <td>{student.phone || 'no phone number'}</td>
-                                    <td>{student.email || 'no email'}</td>
-                                    <Modal  currentStudent={student} name={student.name} />
-                                  </tr>
-                                );
-                              })
-                          }
+                this.state.students.map((student) => {
+                  return (
+                    <tr className="student-row">
+                      <td>{student.name || 'N/A'}</td>
+                      <td>{student.parentName || 'no parent name'}</td>
+                      <td>{student.phone || 'no phone number'}</td>
+                      <td>{student.email || 'no email'}</td>
+                      <Modal currentStudent={student} name={student.name} />
+                    </tr>
+                  );
+                })
+              }
             </tbody>
           </table>
-          <div>
-            <button onClick={(event) => {this.props.changeState(); this.props.showList();}} className="btn btn-sm">Back</button>
-          </div>
         </div>
       </div>
-    ); 
+    );
   }
 }
 

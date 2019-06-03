@@ -78,8 +78,6 @@ body {
         
     }
 
-  
-
     .studentListDiv {
         display: flex;
         position: fixed;
@@ -183,7 +181,7 @@ body {
         /* margin: 40px auto; */
         text-transform: lowercase;
         line-height: 145%;
-        font-size: 18pt;
+        font-size: 16pt;
         font-variant: small-caps;
         word-break: break-all;
         margin-left: 45px;
@@ -205,11 +203,36 @@ body {
 
     #logoutButt {
         height: 30px;
-        /* margin-left: 400px; */
         margin-top: 140px;
         margin-left: 50px;
     }
 
     .jumbotron {
         margin-left: 50px;
+        height: 200px;
+        box-shadow: 2px 3px 2px 3px darkgrey;
+        border-radius: 2px;
+    }
+
+    .table {
+        margin-right: -110px;
+        margin-top: 160px;
+    }
+
+    .backButt {
+        height: 40px;
+
+    }
+
+    .addStudentContainer {
+        height: 60px;
+        width: 200px;
+    }
+
+    #addButt {
+
+    }
+
+    .classes button {
+        
     }
