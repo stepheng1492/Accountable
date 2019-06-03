@@ -1,5 +1,9 @@
 require('dotenv').config();
 
+/**
+ * Database env variables
+ */
+
 const {
   MASTER_USERNAME,
   DB_NAME,
@@ -7,12 +11,23 @@ const {
   DB_URI,
 } = process.env;
 
+
+/**
+ * Using sequelize to connect to mysql database
+ */
+
 const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize(DB_NAME, MASTER_USERNAME, DB_PASSWORD, {
   host: DB_URI,
   dialect: 'mysql',
 });
+
+
+/**
+ * Function call that connects to database
+ * If databse connection is successful, success message logged to console
+ */
 
 sequelize.authenticate()
   .then(() => {
@@ -22,11 +37,13 @@ sequelize.authenticate()
     console.error('Unable to connect to the database:', err);
   });
 
+/**
+ * Teachers is sequelize model that links to Teachers table in our database
+ * Teachers model has name (string), and email (string)
+ */
+
 
 const Teachers = sequelize.define('teacher', {
-  // name
-  // classes
-  // school
   name: {
     type: Sequelize.STRING,
   },
@@ -35,8 +52,12 @@ const Teachers = sequelize.define('teacher', {
   },
 });
 
+/**
+ * Classes is sequelize model that links to Classes table in our database
+ * Classes model has name (string), and teacherID (foreign key pointing to Teachers table ID)
+ */
+
 const Classes = sequelize.define('class', {
-  // name, students
   name: {
     type: Sequelize.STRING,
   },
@@ -45,6 +66,12 @@ const Classes = sequelize.define('class', {
     references: { model: 'teachers', key: 'id' },
   },
 });
+
+/**
+ * Stuents is sequelize model that links to Stuents table in our database
+ * Stuents model has name (string), parnetName (string)
+ * phone (string), email (string), and classID (foreign key pointing to Classes table ID)
+ */
 
 const Students = sequelize.define('student', {
   name: {
@@ -65,7 +92,10 @@ const Students = sequelize.define('student', {
   },
 });
 
-// one student has many comments
+/**
+ * Classes is sequelize model that links to Classes table in our database
+ * Classes model has studentID (foreign key pointing to Student table id) and comment (text)
+ */
 
 const Comments = sequelize.define('comment', {
   studentID: {
@@ -76,6 +106,11 @@ const Comments = sequelize.define('comment', {
     type: Sequelize.TEXT,
   },
 });
+
+
+/**
+ * Export models to use on server index.js to add / remove / update data in database
+ */
 
 module.exports.models = {
   Teachers,
