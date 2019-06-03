@@ -1,8 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Classes from './Classes.jsx';
-// import Modal from './Modal.jsx';
 
 class TeacherHome extends React.Component {
   constructor(props) {
@@ -24,7 +22,6 @@ class TeacherHome extends React.Component {
 
 
   componentDidMount() {
-    // show current teacher name and ID -- set the state
     this.getTeacherData()
       .then((data) => {
         const name = data.data[0].name;
@@ -45,7 +42,6 @@ class TeacherHome extends React.Component {
   }
 
   getTeacherData() {
-    // axios get to teachers -- right now just get the one teacher in the database
     return axios.get('/teachers', {
       params: {
         email: this.props.user.email,
@@ -62,8 +58,6 @@ class TeacherHome extends React.Component {
   }
 
   submitClass(className) {
-    // axios post to classes
-    // need to send the teacherID and className
     axios.post('/classes', {
       className,
       id: this.state.currentTeacherId,
