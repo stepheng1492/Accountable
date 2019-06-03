@@ -3,25 +3,24 @@ const express = require('express');
 const port = 3000;
 const path = require('path');
 const bodyParser = require('body-parser');
+require('dotenv').config();
+const client = require('twilio')(process.env.accountSid, process.env.authToken);
 const db = require('../database/index');
 
-require('dotenv').config();
-
-const client = require('twilio')(process.env.accountSid, process.env.authToken);
-
-
 const app = express();
-app.use(bodyParser.json());
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 
-// post request handler for adding classes
+/**
+ * Post request handler that creates class in database with
+ * className and teacherId from client request
+ * @param {string} '/classes' - endpoint for post request
+ * @param {function} - express callback function
+ */
+
 app.post('/classes', (req, res) => {
-  // save classes to database
-  // on req.body there is class name
   db.models.Classes.create({
     name: req.body.className,
     teacherID: req.body.id,
@@ -35,6 +34,13 @@ app.post('/classes', (req, res) => {
       res.sendStatus(500);
     });
 });
+
+/**
+ * Post request handler that creates student in database with
+ * name, parentName, phone, email, and classID form request body
+ * @param {string} '/students' - endpoint for post request
+ * @param {function} - express callback function
+ */
 
 app.post('/students', (req, res) => {
   db.models.Students.create({
@@ -54,6 +60,13 @@ app.post('/students', (req, res) => {
     });
 });
 
+/**
+ * Post request handler that creates comment in database with
+ * comment text and studentID from request body
+ * @param {string} '/students' - endpoint for post request
+ * @param {function} - express callback function
+ */
+
 app.post('/comments', (req, res) => {
   db.models.Comments.create({
     studentID: req.body.studentID,
@@ -69,10 +82,14 @@ app.post('/comments', (req, res) => {
     });
 });
 
+/**
+ * Get request handler that finds all students in database
+ * where classID matches query from client and sends back to client
+ * @oaram {string} '/students' - endpoint for get request
+ * @param {function} - express callback function
+ */
+
 app.get('/students', (req, res) => {
-  // take class name from query body, associate with id, then get the student info
-  // eveyrthing with that class ID
-  // send it back to the client
   db.models.Students.findAll({
     where: {
       classID: req.query.classID,
@@ -87,12 +104,17 @@ app.get('/students', (req, res) => {
     });
 });
 
-// get request for classes
+
+/**
+ * Get request handler that finds all classes in database
+ * for a spefici teacher and sends back to client
+ * @oaram {string} 'teachers' - endpoint for get request
+ * @param {function} - express callback function
+ */
 
 app.get('/classes', (req, res) => {
   db.models.Classes.findAll({
     where: {
-      // when teacher logs in, all classes associated with their ID show up on page
       teacherID: req.query.teacherID,
     },
   })
@@ -105,7 +127,13 @@ app.get('/classes', (req, res) => {
     });
 });
 
-// comments get req -- when teacher clicks on student history
+
+/**
+ * Get request handler that finds all comments in database
+ * where studentID matches query from client and sends data back to client
+ * @oaram {string} '/comments' - endpoint for get request
+ * @param {function} - express callback function
+ */
 
 app.get('/comments', (req, res) => {
   db.models.Comments.findAll({
@@ -122,11 +150,15 @@ app.get('/comments', (req, res) => {
     });
 });
 
+/**
+ * Get request handler that finds teacher in database
+ * where teacherID matches email of logged in user
+ * @oaram {string} '/teachers' - endpoint for get request
+ * @param {function} - express callback function
+ */
 
-// get handler for teachers -- this will have to be called on successful log in
 
 app.get('/teachers', (req, res) => {
-  // right now, query database and send back the test teacher
   db.models.Teachers.findAll({
     where: {
       email: req.query.email,
@@ -140,15 +172,19 @@ app.get('/teachers', (req, res) => {
     });
 });
 
-// post handler for login -- adding teacher email and name for each teacher to db
+/**
+ * POST request handler that creates teacher in database
+ * if teacher doesn't exists with name and email from google login authentication
+ * @oaram {string} '/login' - endpoint for POST request
+ * @param {function} - express callback function
+ */
 
 app.post('/login', (req, res) => {
-
   db.models.Teachers.findOrCreate({
-    where : {
+    where: {
       name: req.body.name,
       email: req.body.email,
-    }
+    },
   })
     .then(() => {
       console.log('Teacher information successfully saved in the database');
@@ -161,10 +197,18 @@ app.post('/login', (req, res) => {
 });
 
 
-app.post('/texts', (req, res) => {
+/**
+ * POST request handler that sends text message using Twilio API
+ * using phone number and message from client request body
+ * No response sent, no message data currently saved in databse
+ * @oaram {string} '/texts' - endpoint for POST request
+ * @param {function} - express callback function
+ */
+
+app.post('/texts', (req) => {
   client.messages.create({
     to: req.body.phone,
-    from: "+15045968529",
+    from: '+15045968529',
     body: req.body.message,
   });
 });
