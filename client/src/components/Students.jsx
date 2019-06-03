@@ -77,7 +77,7 @@ class Students extends React.Component {
     const { students, renderCommentForm } = this.state;
     // when button is clicked,
     // get student in that row and set state of current student to that student
-    const studentID = parseInt(e.target.name);
+    const studentID = parseInt(e.target.name, 10);
 
     students.map(function commentFunc(student) {
       if (student.id === studentID) {

@@ -43,7 +43,7 @@ class App extends Component {
 
   /**
    * login function makes a post request to '/login', sending email and name on request body
-   * updates the state of user to the user who has logged in 
+   * updates the state of user to the user who has logged in
    */
 
   login() {
@@ -66,8 +66,9 @@ class App extends Component {
    */
 
   render() {
-    const authButton = this.state.user
-      ? <TeacherHome user={this.state.user} logout={this.logout} />
+    const { user } = this.state;
+    const authButton = user
+      ? <TeacherHome user={user} logout={this.logout} />
       : (
         <div className="logincontainer">
           <h3 className="introtitle">Accountable</h3>
